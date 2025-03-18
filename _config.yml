@@ -4,10 +4,10 @@
 baseurl:
 # url: https://mazhuang.org
 date_format: "ordinal"
-title: 码志
-subtitle: "公众号：闷骚的程序员"
-description: "马壮的个人博客，公众号：闷骚的程序员"
-keywords: 码志, Zhuang Ma, mzlogin, mazhuang, 闷骚的程序员
+title: Luis Li
+subtitle: "浇灌内心荒芜的花园"
+description: "技术，生活"
+keywords: dalejenny,Luis Li
 timezone: Asia/Shanghai
 encoding: "utf-8"
 # 页面左下角显示的年份
@@ -57,12 +57,12 @@ highlight_theme: github
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: Zhuang Ma
+author: Luis Li
 organization: 
 organization_url: 
-github_username: mzlogin
-location: Wuhan, China
-email: chumpma@gmail.com
+github_username: dalejenny
+location: tianjing, China
+email: lyq1255446583@gmail.com
 
 # ---------------- #
 #    Navigation    #
