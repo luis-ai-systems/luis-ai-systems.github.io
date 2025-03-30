@@ -59,3 +59,19 @@ kubectl -n kubernetes-dashboard create token kubernetes-dashboard
 ```
 进入页面如下
 [kuberbets界面](images/posts/docker/1500.png)
+
+#### 但是上面进入的权限不够创建新的服务名
+1️⃣ 创建 admin-user ServiceAccount
+```
+kubectl create serviceaccount admin-user -n kubernetes-dashboard
+```
+2️⃣ 创建 ClusterRoleBinding，授予 admin-user cluster-admin 权限
+```
+kubectl create clusterrolebinding admin-user \
+  --clusterrole=cluster-admin \
+  --serviceaccount=kubernetes-dashboard:admin-user
+```
+3️⃣ 获取 admin-user 登录的 Token
+```
+kubectl -n kubernetes-dashboard create token admin-user
+```
