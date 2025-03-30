@@ -1,9 +1,9 @@
 ---
 layout: post
-title: docker-compose部署gitea-CI/CD actions runner工作流
-categories: gitea
-description: devops部署，包括docker-compose容器管理，actions runner调用工作流
-keywords: Gitea, Actions, Runner,CI/CD
+title: 在docker-desktop中启动kubernets
+categories: kubernets
+description: 开始学习kubernets
+keywords: docker,kubernets,k8s,kind
 ---
 # 在docker-desktop中启动kubernets
 ![点击开关](/images/posts/docker/1100.png)
