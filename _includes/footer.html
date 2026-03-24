@@ -38,15 +38,8 @@
     {% if site.components.share.enabled %}
     <script src="{{ assets_base_url }}/assets/vendor/share.js/dist/js/share.min.js"></script>
     {% endif %}
-    <script src="{{ assets_base_url }}/assets/js/geopattern.js"></script>
-    <script>
-      jQuery(document).ready(function($) {
-        $('.geopattern').each(function(){
-          $(this).geopattern($(this).data('pattern-id'));
-        });
-       /* hljs.initHighlightingOnLoad(); */
-      });
-    </script>
+    
+
 
     {% if site.components.fancybox.enabled %}
     <script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
