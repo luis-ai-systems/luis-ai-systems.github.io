@@ -180,9 +180,10 @@ beaudar:
 # giscus 配置参考：https://giscus.app/zh-CN
 giscus:
     repo: luis-ai-systems/luis-ai-systems.github.io
-    repo-id: MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==
+    repo-id: R_kgDOOKvXjQ
     category: Announcements
-    category-id: DIC_kwDOBY0E7c4CRtg9
+    # category-id 需要你去开启 Discussions 后再次获取，暂时留空或保留原样均会报错
+    category-id: 
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
