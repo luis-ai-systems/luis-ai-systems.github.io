@@ -1,6 +1,6 @@
 # Luis Li
 
-Welcome to my personal blog: <https://luis-ai-systems.github.io/luis-ai-system.github.io>
+Welcome to my personal blog: <https://luis-ai-systems.github.io>
 
 ## 概览
 
@@ -8,4 +8,4 @@ Welcome to my personal blog: <https://luis-ai-systems.github.io/luis-ai-system.g
 
 ## 效果预览
 
-**[在线访问 &rarr;](https://luis-ai-systems.github.io/luis-ai-system.github.io)**
+**[在线访问 &rarr;](https://luis-ai-systems.github.io)**
