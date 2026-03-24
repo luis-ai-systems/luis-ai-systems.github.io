@@ -745,7 +745,91 @@ img + em {
 @media (min-width:800px) { .content-header-ad { width: 728px; height: 90px; } }
 
 
-/* --- 极简赛博暗黑黑客风 (Vercel / Cyberpunk Sleek Dark Mode) 追加 --- */
+/* --- Theme Toggle Button --- */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #888;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.theme-toggle-btn:hover {
+    color: #00e5ff;
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.theme-toggle-btn .octicon {
+    margin: 0;
+}
+
+/* --- Light Theme Overrides --- */
+body.light-theme {
+    background-color: #ffffff;
+    color: #333;
+}
+
+body.light-theme .site-header {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+body.light-theme .site-header h1 a {
+    color: #333 !important;
+    text-shadow: none;
+}
+
+body.light-theme .site-header-nav-item {
+    color: #666 !important;
+}
+
+body.light-theme .site-header-nav-item:hover {
+    color: #000 !important;
+}
+
+body.light-theme .container {
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+body.light-theme .markdown-body {
+    color: #444 !important;
+}
+
+body.light-theme .markdown-body h1, 
+body.light-theme .markdown-body h2, 
+body.light-theme .markdown-body h3 {
+    color: #000 !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+body.light-theme a {
+    color: #0366d6 !important;
+}
+
+body.light-theme .repo-list-item {
+    background-color: #fff !important;
+    border: 1px solid #eee !important;
+}
+
+body.light-theme .repo-list-item:hover {
+    border-color: #0366d6 !important;
+}
+
+body.light-theme .theme-toggle-btn {
+    border-color: #ddd;
+    color: #666;
+}
+
+/* --- Original Dark Styles --- */
 body {
     background-color: #000000;
     /* Subtle starry/hacker grid background */

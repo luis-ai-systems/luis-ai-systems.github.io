@@ -19,6 +19,9 @@ def cast_magic():
 ```
 
 *保持优雅，保持好奇。*
+
+---
+
 # WebSocket 架构图 (WebSocket Architecture)
 
 本文档描述了 Workflow Engine 项目中 WebSocket 实时消息系统的整体架构设计，包含前端连接管理、后端处理逻辑、鉴权流程及消息持久化机制。
@@ -96,4 +99,4 @@ graph TD
 *   **消息回执 (ACK)**: 前端收到消息后发送 ACK，后端更新消息状态（已送达/已读），确保消息不丢失。
 
 ---
-*文档由 Antigravity 自动生成于 2026-03-24*帮我生成一张架构图 
+*文档由 Antigravity 自动生成于 2026-03-24*
