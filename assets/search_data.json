@@ -1,0 +1,1124 @@
+
+
+[
+  
+  
+    {
+      "title"    : "页面没有找到",
+      "url"      : "https://luis-ai-systems.github.io/404.html",
+      "keywords" : "404"
+    } ,
+  
+  
+  
+    {
+      "title"    : "About",
+      "url"      : "https://luis-ai-systems.github.io/about/",
+      "keywords" : "Zhuang Ma, 马壮"
+    } ,
+  
+  
+  
+    {
+      "title"    : "归档",
+      "url"      : "https://luis-ai-systems.github.io/archives/",
+      "keywords" : "归档"
+    } ,
+  
+  
+  
+    {
+      "title"    : "Categories",
+      "url"      : "https://luis-ai-systems.github.io/categories/",
+      "keywords" : "分类"
+    } ,
+  
+  
+  
+    {
+      "title"    : "捐助 / Donate",
+      "url"      : "https://luis-ai-systems.github.io/donate/",
+      "keywords" : "Donate"
+    } ,
+  
+  
+  
+    {
+      "title"    : "Fragments",
+      "url"      : "https://luis-ai-systems.github.io/fragments/",
+      "keywords" : "fragments"
+    } ,
+  
+  
+  
+  
+  
+    {
+      "title"    : "Links",
+      "url"      : "https://luis-ai-systems.github.io/links/",
+      "keywords" : "友情链接"
+    } ,
+  
+  
+  
+    {
+      "title"    : "mindmap",
+      "url"      : "https://luis-ai-systems.github.io/mindmap-viewer/",
+      "keywords" : "mindmap"
+    } ,
+  
+  
+  
+    {
+      "title"    : "Open Source Projects",
+      "url"      : "https://luis-ai-systems.github.io/open-source/",
+      "keywords" : "开源,open-source,GitHub,开源项目"
+    } ,
+  
+  
+  
+  
+  
+    {
+      "title"    : "Wiki",
+      "url"      : "https://luis-ai-systems.github.io/wiki/",
+      "keywords" : "维基, Wiki"
+    } ,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    {
+      "title"    : "docker-compose部署gitea-CI/CD actions runner工作流",
+      "category" : "gitea",
+      
+      "url"      : "https://luis-ai-systems.github.io/2025/03/19/devops/",
+      "keywords" : "Gitea, Actions, Runner,CI/CD"
+    } ,
+  
+    {
+      "title"    : "docker-compose部署gitea-CI/CD actions runner工作流",
+      "category" : "gitea",
+      
+      "url"      : "https://luis-ai-systems.github.io/2025/03/24/excel+ai/",
+      "keywords" : "Gitea, Actions, Runner,CI/CD"
+    } ,
+  
+    {
+      "title"    : "在docker-desktop中启动kubernets",
+      "category" : "kubernets",
+      
+      "url"      : "https://luis-ai-systems.github.io/2025/03/30/docker-kubernets/",
+      "keywords" : "docker,kubernets,k8s,kind"
+    } ,
+  
+    {
+      "title"    : "在docker-desktop中部署gitea",
+      "category" : "gitea,docker",
+      
+      "url"      : "https://luis-ai-systems.github.io/2025/04/01/docker-gitea/",
+      "keywords" : "docker,gitea"
+    } ,
+  
+    {
+      "title"    : "JSON",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-3rd-json/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "网络请求",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-3rd-network/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "ORM",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-3rd-orm/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "动画",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-animation/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "架构模式",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-arch-mode/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "体系结构",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-arch/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "ART 与 Dalvik 的区别",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-art-and-dalvik/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "开机自启动",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-auto-boot/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Activity",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-components-activity/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "BroadcastReceiver",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-components-broadcastreceiver/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Fragment",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-components-fragment/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Intent",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-components-intent/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Service",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-components-service/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Context",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-context/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "事件分发机制",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-event-dispatch/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "进程间通信",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-ipc/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "消息机制",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-messages/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Android 开发技术概述",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-overview/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "插件化",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-plugin/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "坐标系",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-position/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Android 逆向工程",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-reverse-engineering/",
+      "keywords" : "keyword1, keyword2"
+    } ,
+  
+    {
+      "title"    : "屏幕适配",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-screen-support/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "软键盘",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-softinput/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Android Studio",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-studio/",
+      "keywords" : "Android, Android Studio"
+    } ,
+  
+    {
+      "title"    : "Awesome Adb",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-tools-adb/",
+      "keywords" : "adb, Andriod Debug Bridge"
+    } ,
+  
+    {
+      "title"    : "构建和签名",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-tools-build/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "更新 UI",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-update-ui/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Button",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-button/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "CheckBox",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-checkbox/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Dialog",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-dialog/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "EditText",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-edittext/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "ImageView",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-imageview/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "LinearLayout",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-linearlayout/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "ListView",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-listview/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "RecyclerView",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-recyclerview/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "TabLayout",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-tablayout/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "TextView",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-textview/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Toolbar",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-toolbar/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "ViewPager",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-viewpager/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "WebView",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view-webview/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "View",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/android-view/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "AsciiDoc Intro",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/asciidoc-intro/",
+      "keywords" : "AsciiDoc"
+    } ,
+  
+    {
+      "title"    : "Axure",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/axure/",
+      "keywords" : "Axure RP"
+    } ,
+  
+    {
+      "title"    : "Badminton",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/badminton/",
+      "keywords" : "羽毛球"
+    } ,
+  
+    {
+      "title"    : "单例模式",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-dp-singleton/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "模板方法模式",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-dp-template-method/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "设计模式",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-dp/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "串口通信",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-hardware-serial-port/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "网络",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-network/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "面向对象",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-oop/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "I/O 模型",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-os-io/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "进程",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-os-process/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "线程安全与可重入",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-os-thread-safe-and-reentrant/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "线程",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/basis-os-thread/",
+      "keywords" : "Basis"
+    } ,
+  
+    {
+      "title"    : "中文文案排版指北（简体中文版）",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/chinese-copywriting-guidelines/",
+      "keywords" : "中文文案排版指北"
+    } ,
+  
+    {
+      "title"    : "Eclipse",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/eclipse/",
+      "keywords" : "Eclipse"
+    } ,
+  
+    {
+      "title"    : "Emacs",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/emacs/",
+      "keywords" : "Emacs, 快捷键"
+    } ,
+  
+    {
+      "title"    : "Excel",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/excel/",
+      "keywords" : "Excel, Office"
+    } ,
+  
+    {
+      "title"    : "Git",
+      "category" : "Git",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/git/",
+      "keywords" : "Git, 版本控制"
+    } ,
+  
+    {
+      "title"    : "GitHub",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/github/",
+      "keywords" : "GitHub"
+    } ,
+  
+    {
+      "title"    : "善用佳软",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/good-soft/",
+      "keywords" : "软件, 推荐"
+    } ,
+  
+    {
+      "title"    : "IDA Pro",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/ida-pro/",
+      "keywords" : "debug, IDA Pro"
+    } ,
+  
+    {
+      "title"    : "IntelliJ IDEA",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/intellij-idea/",
+      "keywords" : "IDEA, Java"
+    } ,
+  
+    {
+      "title"    : "语言基础",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-basis/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Dubbo",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-dubbo/",
+      "keywords" : "Java, Dubbo"
+    } ,
+  
+    {
+      "title"    : "内部类",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-internal-class/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "JVM",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-jvm/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "Lombok",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-lombok/",
+      "keywords" : "Lombok"
+    } ,
+  
+    {
+      "title"    : "Maven",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-maven/",
+      "keywords" : "Java, Maven"
+    } ,
+  
+    {
+      "title"    : "MyBatis-Plus",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-mybatis-plus/",
+      "keywords" : "Java, MyBatis-Plus"
+    } ,
+  
+    {
+      "title"    : "多线程",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-threads/",
+      "keywords" : "Android"
+    } ,
+  
+    {
+      "title"    : "开发工具箱",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/java-toolbox/",
+      "keywords" : "Java, 工具箱"
+    } ,
+  
+    {
+      "title"    : "Kindle 屏保图片",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/kindle-screensavers/",
+      "keywords" : "kindle, Screensavers, Paperwhite"
+    } ,
+  
+    {
+      "title"    : "Kindle",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/kindle/",
+      "keywords" : "Kindle"
+    } ,
+  
+    {
+      "title"    : "Linux/Unix",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/linux/",
+      "keywords" : "Linux"
+    } ,
+  
+    {
+      "title"    : "Mac OS X",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/mac/",
+      "keywords" : "Mac"
+    } ,
+  
+    {
+      "title"    : "Markdown Intro",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/markdown-intro/",
+      "keywords" : "markdown"
+    } ,
+  
+    {
+      "title"    : "Markdown",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/markdown/",
+      "keywords" : "Markdown"
+    } ,
+  
+    {
+      "title"    : "MPV",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/mpv/",
+      "keywords" : "mpv"
+    } ,
+  
+    {
+      "title"    : "MySQL",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/mysql/",
+      "keywords" : "MySQL"
+    } ,
+  
+    {
+      "title"    : "OllyDbg",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/ollydbg/",
+      "keywords" : "debug, ollydbg"
+    } ,
+  
+    {
+      "title"    : "OneNote",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/onenote/",
+      "keywords" : "OneNote, GTD"
+    } ,
+  
+    {
+      "title"    : "企业微信",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/open-wxwork/",
+      "keywords" : "企业微信"
+    } ,
+  
+    {
+      "title"    : "PHP",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/php/",
+      "keywords" : "php"
+    } ,
+  
+    {
+      "title"    : "PowerShell",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/powershell/",
+      "keywords" : "Windows, PowerShell"
+    } ,
+  
+    {
+      "title"    : "Python",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/python/",
+      "keywords" : "Python"
+    } ,
+  
+    {
+      "title"    : "Qt Creator",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/qt-creator/",
+      "keywords" : "Qt, Qt Creator"
+    } ,
+  
+    {
+      "title"    : "Scoop",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/scoop/",
+      "keywords" : "scoop, windows"
+    } ,
+  
+    {
+      "title"    : "Skill Tree",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/skill-tree/",
+      "keywords" : "技能树, 思维导图, mindmap, 脑图"
+    } ,
+  
+    {
+      "title"    : "Source Insight",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/source-insight/",
+      "keywords" : "Source Insight"
+    } ,
+  
+    {
+      "title"    : "Swimming",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/swimming/",
+      "keywords" : "游泳, 蛙泳"
+    } ,
+  
+    {
+      "title"    : "Wiki Template",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/template/",
+      "keywords" : "keyword1, keyword2"
+    } ,
+  
+    {
+      "title"    : "Vim",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/vim/",
+      "keywords" : "Vim"
+    } ,
+  
+    {
+      "title"    : "Visio",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/visio/",
+      "keywords" : "Visio"
+    } ,
+  
+    {
+      "title"    : "Visual Studio Code",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/visual-studio-code/",
+      "keywords" : "Visual Studio Code"
+    } ,
+  
+    {
+      "title"    : "Visual Studio",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/visual-studio/",
+      "keywords" : "Visual Studio"
+    } ,
+  
+    {
+      "title"    : "微信",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/wechat/",
+      "keywords" : "微信, wechat"
+    } ,
+  
+    {
+      "title"    : "Windows Terminal",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/wiki/windows-terminal/",
+      "keywords" : "Windows Terminal"
+    } ,
+  
+    {
+      "title"    : "Android Image 里的 pixelStride 和 rowStride",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/android-image-pixelstride-and-rowstride/",
+      "keywords" : "Android, ImageReader, pixelStride, rowStride"
+    } ,
+  
+    {
+      "title"    : "Edge 浏览器本地安装 crx 插件",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/edge-local-install-crx-extensions/",
+      "keywords" : "crx"
+    } ,
+  
+    {
+      "title"    : "生成自签名证书",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/gen-self-sign-cert/",
+      "keywords" : "openssl, https"
+    } ,
+  
+    {
+      "title"    : "给 GitHub 配置 SSH 代理",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/github-ssh-proxy/",
+      "keywords" : "GitHub, SSH, 代理"
+    } ,
+  
+    {
+      "title"    : "IDEA 无法 import 自己工程中的类",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/idea-cannot-resolve-class-in-current-application/",
+      "keywords" : "Java, IDEA"
+    } ,
+  
+    {
+      "title"    : "让 UITabBarController 在 iOS 18 的 iPad 上显示在底部",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/ios-18-UITabBarController-style-in-ipad/",
+      "keywords" : "iOS, iPad, UITabBarController"
+    } ,
+  
+    {
+      "title"    : "Kindle 字典安装",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/kindle-dict-setup/",
+      "keywords" : "Kindle, 字典"
+    } ,
+  
+    {
+      "title"    : "解决 Kindle 生字注音功能无法使用的问题",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/kindle-shengzizhuyin/",
+      "keywords" : "Kindle"
+    } ,
+  
+    {
+      "title"    : "Mac 清理磁盘空间",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mac-clean-up-disk-space/",
+      "keywords" : "Mac, clean up disk space"
+    } ,
+  
+    {
+      "title"    : "Mac 下删除 zip 文件里的隐藏文件",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mac-clean-zip/",
+      "keywords" : "Mac, zip, DS_Store, MACOSX"
+    } ,
+  
+    {
+      "title"    : "macOS 下提取 .dmg 文件的内容",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mac-extract-dmg/",
+      "keywords" : "macOS, dmg"
+    } ,
+  
+    {
+      "title"    : "Mac 卸载输入法",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mac-remove-input-method/",
+      "keywords" : "Mac, 输入法"
+    } ,
+  
+    {
+      "title"    : "Mac 打开应用程序时出现「你不能打开应用程序」错误",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mac-sonoma-application-cannot-open/",
+      "keywords" : "Mac, Microsoft Edge, sonoma"
+    } ,
+  
+    {
+      "title"    : "Mac 下让 Spotlight 显示英汉汉英互译",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mac-spotlight-c2ee2c/",
+      "keywords" : "Mac, Spotlight, 翻译"
+    } ,
+  
+    {
+      "title"    : "MacBook Pro 使用 PD 充电时，指纹解锁失效",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/macbook-fingerprint-invalid/",
+      "keywords" : "Mac, 指纹"
+    } ,
+  
+    {
+      "title"    : "macOS 下 Python3 提示 No module named _tkinter",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/macos-python3-tkinter/",
+      "keywords" : "macOS, Python3, tkinter"
+    } ,
+  
+    {
+      "title"    : "消除错误 Since Maven 3.8.1 http repositories are blocked",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/maven-http-repositories-are-blocked/",
+      "keywords" : "maven"
+    } ,
+  
+    {
+      "title"    : "Maven 项目引用本地 jar 包",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/maven-include-local-jar/",
+      "keywords" : "Maven, Java"
+    } ,
+  
+    {
+      "title"    : "Maven 项目只在某台机器上报找不到某个类",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/maven-zero-byte-jar/",
+      "keywords" : "Java, Maven"
+    } ,
+  
+    {
+      "title"    : "MySQL 表空间碎片回收",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/mysql-space-recover/",
+      "keywords" : "MySQL"
+    } ,
+  
+    {
+      "title"    : "SpringMVC Controller 单元测试示例",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/springmvc-controller-unittest/",
+      "keywords" : "Java, Spring, SpringMVC"
+    } ,
+  
+    {
+      "title"    : "ssh 报错 no matching host key type found",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/ssh-no-matching-host-key-type-found/",
+      "keywords" : "ssh"
+    } ,
+  
+    {
+      "title"    : "Swagger Springfox NumberFormatException",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/swagger-springfox-NumberFormatException/",
+      "keywords" : "Java, Swagger, Springfox, NumberFormatException"
+    } ,
+  
+    {
+      "title"    : "禁止 Swagger 文档里的 Timestamp 类型展开",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/swagger-timestamp/",
+      "keywords" : "Java, Swagger, Timestamp"
+    } ,
+  
+    {
+      "title"    : "Fragment Template",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/template/",
+      "keywords" : "keyword1, keyword2"
+    } ,
+  
+    {
+      "title"    : "VSCode 自定义 Markdown 预览样式",
+      "category" : "",
+      
+      "url"      : "https://luis-ai-systems.github.io/fragment/vscode-markdown-preview-custom-css/",
+      "keywords" : "VSCode, Markdown"
+    } 
+  
+]
+
