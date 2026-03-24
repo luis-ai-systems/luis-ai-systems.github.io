@@ -1,5 +1,5 @@
 // https://github.com/ghiculescu/jekyll-table-of-contents
-// Updated by https://luis-ai-systems.github.io/luis-ai-system.github.io
+// Updated by https://luis-ai-systems.github.io
 (function($){
   $.fn.toc = function(options) {
     var defaults = {

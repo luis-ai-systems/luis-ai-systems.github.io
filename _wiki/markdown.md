@@ -20,14 +20,14 @@ mindmap: true
 ### 超链接
 
 ```
-[靠谱-ing](https://luis-ai-systems.github.io/luis-ai-system.github.io)
+[靠谱-ing](https://luis-ai-systems.github.io)
 
-<https://luis-ai-systems.github.io/luis-ai-system.github.io>
+<https://luis-ai-systems.github.io>
 ```
 
-[靠谱-ing](https://luis-ai-systems.github.io/luis-ai-system.github.io)  
+[靠谱-ing](https://luis-ai-systems.github.io)  
 
-<https://luis-ai-systems.github.io/luis-ai-system.github.io>
+<https://luis-ai-systems.github.io>
 
 ### 列表
 
