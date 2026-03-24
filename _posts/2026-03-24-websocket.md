@@ -72,9 +72,9 @@ graph TD
 ### 2.1 前端组件 (Frontend Components)
 
 *   **WebSocketManager.js**: 核心连接管理器。
-    *   **职责**: 维护单例连接、自动重连 (指数退避策略)、发送心跳 (30s ping/pong)、消息 JSON 解析及发布订阅模式。
+    *   **职责**: 维护单例连接、自动重连（指数退避策略）、发送心跳（30s ping/pong）、消息 JSON 解析及发布订阅模式。
     *   **鉴权**: 从 `localStorage` 获取 `Admin-Token` 并通过 URL 参数传递。
-*   **WebSocketNotificationBell.vue**: 顶部导航条的通知组件.
+*   **WebSocketNotificationBell.vue**: 顶部导航条的通知组件。
     *   **职责**: 展示实时通知、统计未读数、展示消息弹窗、与后端交互同步已读状态。
     *   **逻辑**: 首次加载时通过 REST API 获取历史消息，随后通过 WebSocket 接收实时增量消息。
 
@@ -86,7 +86,7 @@ graph TD
     *   **职责**: 
         *   **Session 管理**: 在内存中维护 `userId` 到 `Set<WebSocketSession>` 的映射，支持同一用户多设备/多标签页同时在线。
         *   **异步处理**: 使用自定义线程池处理业务逻辑，防止 IO 阻塞 WebSocket 主线程。
-        *   **协议支持**: 处理 `PRIVATE_MESSAGE` (私聊), `GROUP_MESSAGE` (群聊), `PING` (心跳), `MESSAGE_ACK` (消息回执) 等多种消息格式。
+        *   **协议支持**: 处理 `PRIVATE_MESSAGE`（私聊）、`GROUP_MESSAGE`（群聊）、`PING`（心跳）、`MESSAGE_ACK`（消息回执）等多种消息格式。
 *   **TaskExecutors**: 线程池管理。
     *   **职责**: 隔离 WebSocket IO 线程与具体的业务处理逻辑。
 

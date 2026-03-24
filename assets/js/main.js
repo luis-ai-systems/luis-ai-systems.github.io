@@ -40,16 +40,18 @@ jQuery(function() {
   const currentTheme = localStorage.getItem('theme');
   if (currentTheme === 'light') {
     body.classList.add('light-theme');
+    if (themeToggle) {
+      themeToggle.checked = true;
+    }
   }
 
   if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      
-      // 保存设置到本地存储
-      if (body.classList.contains('light-theme')) {
+    themeToggle.addEventListener('change', () => {
+      if (themeToggle.checked) {
+        body.classList.add('light-theme');
         localStorage.setItem('theme', 'light');
       } else {
+        body.classList.remove('light-theme');
         localStorage.setItem('theme', 'dark');
       }
     });

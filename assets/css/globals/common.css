@@ -745,29 +745,108 @@ img + em {
 @media (min-width:800px) { .content-header-ad { width: 728px; height: 90px; } }
 
 
-/* --- Theme Toggle Button --- */
-.theme-toggle-btn {
-    background: transparent;
-    border: 1px solid #333;
-    color: #888;
-    padding: 5px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-left: 15px;
-    transition: all 0.3s ease;
-    display: inline-flex;
+/* --- Premium Theme Toggle Switch --- */
+.theme-switch-wrapper {
+    display: flex;
     align-items: center;
-    vertical-align: middle;
+    margin-left: 20px;
+    height: 100%;
 }
 
-.theme-toggle-btn:hover {
+.theme-switch {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #1a1a1a;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #333;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+.slider:before {
+    background-image: linear-gradient(135deg, #00e5ff 0%, #00aaff 100%);
+    bottom: 3px;
+    content: "";
+    height: 20px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 20px;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #e0e0e0;
+    border-color: #ddd;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+    background-image: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+
+.slider .sun, .slider .moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.slider .sun {
+    right: 8px;
+    color: #f39c12;
+    opacity: 0;
+}
+
+.slider .moon {
+    left: 8px;
     color: #00e5ff;
-    border-color: #00e5ff;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    opacity: 1;
 }
 
-.theme-toggle-btn .octicon {
-    margin: 0;
+input:checked + .slider .sun {
+    opacity: 1;
+}
+
+input:checked + .slider .moon {
+    opacity: 0;
+}
+
+/* Hover effects */
+.theme-switch:hover .slider {
+    border-color: #00e5ff;
+}
+
+body.light-theme .theme-switch:hover .slider {
+    border-color: #f39c12;
 }
 
 /* --- Light Theme Overrides --- */
@@ -824,9 +903,8 @@ body.light-theme .repo-list-item:hover {
     border-color: #0366d6 !important;
 }
 
-body.light-theme .theme-toggle-btn {
-    border-color: #ddd;
-    color: #666;
+body.light-theme .repo-list-name a {
+    color: #0366d6 !important;
 }
 
 /* --- Original Dark Styles --- */
