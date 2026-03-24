@@ -152,7 +152,7 @@ collections:
 #      Comments    #
 # ---------------- #
 # support provider: disqus, gitment, gitalk, utterances, beaudar, giscus
-comments_provider: 
+comments_provider: giscus
 # !!!重要!!! 请修改下面这些信息为你自己申请的
 # !!!Important!!! Please modify infos below to yours
 # disqus 配置参考：https://disqus.com
@@ -161,25 +161,25 @@ disqus:
 # gitment 配置参考：https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: luis-ai-systems
-    repo: blog-comments
+    repo: luis-ai-systems.github.io
     oauth:
         client_id: d2e1cbbd298958076462
         client_secret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
 # gitalk 配置参考：https://github.com/gitalk/gitalk#install
 gitalk:
     owner: luis-ai-systems
-    repo: blog-comments
+    repo: luis-ai-systems.github.io
     clientID: d2e1cbbd298958076462
     clientSecret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
 # utterances 配置参考：https://utteranc.es/
 utterances:
-    repo: luis-ai-systems/blog-comments
+    repo: luis-ai-systems/luis-ai-systems.github.io
 # beaudar 配置参考：https://beaudar.lipk.org/
 beaudar:
-    repo: luis-ai-systems/blog-comments
+    repo: luis-ai-systems/luis-ai-systems.github.io
 # giscus 配置参考：https://giscus.app/zh-CN
 giscus:
-    repo: luis-ai-systems/blog-comments
+    repo: luis-ai-systems/luis-ai-systems.github.io
     repo-id: MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==
     category: Announcements
     category-id: DIC_kwDOBY0E7c4CRtg9
