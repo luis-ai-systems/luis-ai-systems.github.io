@@ -118,9 +118,9 @@ index:
         # 首页导航栏文字颜色
         nav-color: "rgba(255, 255, 255, .5)"
         # 首页 banner 区背景颜色
-        background-color: "#1e1e24"
+        background-color: "#0a0a0c"
         # 首页 banner 区背景图片
-        background-image: "https://i.loli.net/2021/08/14/sXZN3Gcwk8V1Y4b.jpg"
+        background-image: "https://w.wallhaven.cc/zy/p9/wallhaven-p9jryj.jpg"
         background-repeat: "no-repeat"
         background-size: "cover"
 
