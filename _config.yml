@@ -113,11 +113,11 @@ index:
         # 首页导航栏文字颜色
         nav-color: "rgba(255, 255, 255, .5)"
         # 首页 banner 区背景颜色
-        background-color: "#0a0a0c"
+        background-color: "#3b3e43"
         # 首页 banner 区背景图片
-        background-image: "https://w.wallhaven.cc/zy/p9/wallhaven-p9jryj.jpg"
-        background-repeat: "no-repeat"
-        background-size: "cover"
+        background-image: "https://www.transparenttextures.com/patterns/woven.png"
+        background-repeat: "repeat"
+        background-size: "auto"
 
 # ---------------- #
 #      Jekyll      #
