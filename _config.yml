@@ -182,8 +182,7 @@ giscus:
     repo: luis-ai-systems/luis-ai-systems.github.io
     repo-id: R_kgDOOKvXjQ
     category: Announcements
-    # category-id 需要你去开启 Discussions 后再次获取，暂时留空或保留原样均会报错
-    category-id: 
+    category-id: DIC_kwDOOKvXjc4C5JjO
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
