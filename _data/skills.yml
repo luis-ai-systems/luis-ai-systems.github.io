@@ -1,19 +1,9 @@
-- name: Software Engineer Keywords
+- name: 魔法语言
   keywords:
-      - Java
-      - C++
-      - Python
-      - Design Patterns
-
-- name: Mobile Developer Keywords
+    - Python
+    - JavaScript
+- name: 结界构建
   keywords:
-      - Android
-      - Reverse Engineering
-
-- name: Windows Developer Keywords
-  keywords:
-      - Win32 SDK
-      - DuiLib
-      - WTL
-      - COM
-      - WinDbg
+    - Vue
+    - React
+    - Node.js
