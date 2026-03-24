@@ -6,7 +6,7 @@ cate2: Tools
 description: 
 keywords: adb, Andriod Debug Bridge
 type: link
-link: https://github.com/mzlogin/awesome-adb
+link: https://github.com/luis-ai-systems/awesome-adb
 ---
 
 Content here
