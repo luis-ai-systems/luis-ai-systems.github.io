@@ -1,8 +1,8 @@
 # ---------------- #
 #   Main Configs   #
 # ---------------- #
-baseurl:
-# url: https://luis-ai-systems.github.io/luis-ai-system.github.io
+baseurl: "/luis-ai-system.github.io"
+url: "https://luis-ai-systems.github.io"
 date_format: "ordinal"
 title: Luis Li
 subtitle: "浇灌内心荒芜的花园"
