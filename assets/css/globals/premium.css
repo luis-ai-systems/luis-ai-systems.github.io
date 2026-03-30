@@ -350,8 +350,8 @@ footer.container:hover {
 }
 
 .container:hover {
-    border-color: var(--color-border-hover) !important;
-    box-shadow: var(--shadow-md), var(--shadow-glow-cyan) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: var(--shadow-md) !important;
     transform: none !important;
 }
 
@@ -1277,4 +1277,74 @@ body.light-theme .repo-list-item::before {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+
+/* ============================================
+   FINAL OVERRIDE - Container Transparency
+   Must be at end of file for specificity
+   ============================================ */
+header.site-header > .container,
+.site-header > .container,
+.site-header .container {
+    background: transparent !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    padding: 0 20px !important;
+    margin: 0 auto !important;
+}
+
+header.site-header > .container:hover,
+.site-header > .container:hover,
+.site-header .container:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+section.banner .container,
+section.collection-head .container,
+.collection-head .container,
+.banner .container {
+    background: transparent !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+}
+
+section.banner .container:hover,
+section.collection-head .container:hover,
+.collection-head .container:hover,
+.banner .container:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+footer.container,
+footer.container:hover {
+    background: transparent !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+}
+
+/* Content container keeps its styling */
+section.content.container,
+section.container.content {
+    background: var(--color-bg-card) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-md) !important;
 }
