@@ -93,6 +93,10 @@ navs:
     href: /wiki/
     label: 维基
 
+  -
+    href: https://roadmap.sh/u/luisai
+    label: 路线图
+    mobile-hidden: true
 
   -
     href: /about/

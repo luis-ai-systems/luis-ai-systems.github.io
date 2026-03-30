@@ -12,11 +12,25 @@ permalink: /about/
 
 我是一名喜欢二次元的开发者，热衷于探索技术的边界。在这片结界中，我会分享一些技术心得、生活碎片以及我喜欢的动漫和游戏。
 
-## 技能树
+---
 
-* 代码魔法 (Frontend, Backend)
-* ACG 狂热爱好者
+## 🗺️ 技能树
 
-## 联系
+> 每一个技能点都是踩坑后的星光 ✦
+
+* 🧭 [Roadmap.sh 技能图谱](https://roadmap.sh/u/luisai) — 我的学习路线全记录
+* 💻 代码魔法 — Frontend · Backend · Full Stack
+* 🎌 ACG 狂热爱好者 — 动漫 · 游戏 · 轻小说
+
+---
+
+## 🔗 联系
 
 可以随时在各种次元中找到我哦。
+
+* 📧 Email: [lyq1255446583@gmail.com](mailto:lyq1255446583@gmail.com)
+* 🐙 GitHub: [luis-ai-systems](https://github.com/luis-ai-systems)
+
+---
+
+> *「浇灌内心荒芜的花园」*
