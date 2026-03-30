@@ -92,6 +92,8 @@ body {
     display: block;
     width: 100%;
     height: 100%;
+    touch-action: none; /* Critical for trackpad drag */
+    cursor: crosshair;
 }
 </style>
 
@@ -103,22 +105,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let width, height;
     let particles = [];
     let nodes = [];
-    let runtimeError = null;
     
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン零一二三四五六七八九十界虚空神机同步律动";
     
     function resize() {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        width = canvas.width = rect.width || window.innerWidth || 1000;
-        height = canvas.height = rect.height || window.innerHeight || 800;
+        // Fallback robust sizing
+        let rect = canvas.parentElement.getBoundingClientRect();
+        width = canvas.width = (rect.width > 0 ? rect.width : window.innerWidth) || 1200;
+        height = canvas.height = (rect.height > 0 ? rect.height : window.innerHeight) || 800;
         
-        // Setup initial nodes only if empty
         if (nodes.length === 0) {
             nodes.push(new Node(width * 0.3, height * 0.4, "NODE-ALPHA"));
             nodes.push(new Node(width * 0.5, height * 0.6, "NEXUS-CORE"));
             nodes.push(new Node(width * 0.7, height * 0.3, "DATA-SINK"));
         } else {
-            // Adjust nodes layout on resize
             nodes[0].x = width * 0.3; nodes[0].y = height * 0.4;
             nodes[1].x = width * 0.5; nodes[1].y = height * 0.6;
             nodes[2].x = width * 0.7; nodes[2].y = height * 0.3;
@@ -129,8 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     class Node {
         constructor(x, y, label) {
-            this.x = x || 100;
-            this.y = y || 100;
+            this.x = x;
+            this.y = y;
             this.radius = 90; 
             this.coreRadius = 15;
             this.label = label;
@@ -169,9 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
             this.baseY = y;
             this.x = x;
             this.y = y;
-            this.char = charset[Math.floor(Math.random() * charset.length)];
-            const colors = ["rgba(255,255,255,0.7)", "rgba(0, 229, 255, 0.5)", "rgba(124, 77, 255, 0.6)"];
-            this.color = colors[Math.floor(Math.random() * colors.length)];
+            let cIndex = Math.floor(Math.random() * charset.length);
+            this.char = charset[cIndex] || "X";
+            
+            const colorList = ["rgba(255, 255, 255, 0.8)", "rgba(0, 229, 255, 0.6)", "rgba(124, 77, 255, 0.7)"];
+            this.color = colorList[Math.floor(Math.random() * colorList.length)];
             this.vx = 0;
             this.vy = 0;
             this.currentColor = this.color;
@@ -180,30 +182,28 @@ document.addEventListener("DOMContentLoaded", () => {
         update() {
             let dx = this.baseX - this.x;
             let dy = this.baseY - this.y;
-            this.vx += dx * 0.05; 
-            this.vy += dy * 0.05;
+            this.vx += dx * 0.08; 
+            this.vy += dy * 0.08;
             
-            let isAlarmed = false;
-            
-            nodes.forEach(node => {
+            let alarmed = false;
+            for(let i=0; i<nodes.length; i++) {
+                let node = nodes[i];
                 let distX = this.x - node.x;
                 let distY = this.y - node.y;
-                let dist = Math.sqrt(distX * distX + distY * distY);
+                let dist = Math.sqrt(distX * distX + distY * distY) || 1;
                 
                 if (dist < node.radius) {
                     let force = (node.radius - dist) / node.radius;
-                    let angle = Math.atan2(distY, distX);
-                    this.vx += Math.cos(angle) * force * 5;
-                    this.vy += Math.sin(angle) * force * 5;
-                    isAlarmed = true;
+                    // Ensure strong push
+                    this.vx += (distX / dist) * force * 10;
+                    this.vy += (distY / dist) * force * 10;
+                    alarmed = true;
                 }
-            });
+            }
             
-            this.currentColor = isAlarmed ? "#00e5ff" : this.color;
-            
-            this.vx *= 0.8;
-            this.vy *= 0.8;
-            
+            this.currentColor = alarmed ? "#00e5ff" : this.color;
+            this.vx *= 0.7;
+            this.vy *= 0.7;
             this.x += this.vx;
             this.y += this.vy;
         }
@@ -217,9 +217,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function initParticles() {
         particles = [];
         const spacing = 22; 
-        for (let y = 0; y < height; y += spacing) {
-            for (let x = 0; x < width; x += spacing) {
-                if (Math.random() > 0.3) {
+        for (let y = 10; y < height; y += spacing) {
+            for (let x = 10; x < width; x += spacing) {
+                // Populate heavily to ensure visibility
+                if(Math.random() > 0.2) {
                     particles.push(new Particle(x, y));
                 }
             }
@@ -230,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let draggedNode = null;
     
     function getEventPos(e) {
-        const rect = canvas.getBoundingClientRect();
+        let rect = canvas.getBoundingClientRect();
         if (e.touches && e.touches.length > 0) {
             return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
         }
@@ -240,11 +241,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleDown(e) {
         const pos = getEventPos(e);
         mouse.x = pos.x; mouse.y = pos.y; mouse.isDown = true;
+        draggedNode = null;
         
         for (let i = nodes.length - 1; i >= 0; i--) {
             let dx = mouse.x - nodes[i].x;
             let dy = mouse.y - nodes[i].y;
-            if (dx * dx + dy * dy < 1600) { 
+            if (dx * dx + dy * dy < 2500) { // Large click radius for trackpads
                 draggedNode = nodes[i];
                 draggedNode.isDragging = true;
                 break;
@@ -254,9 +256,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleMove(e) {
         if (!mouse.isDown) return;
-        if (e.cancelable) e.preventDefault();
         const pos = getEventPos(e);
         if (draggedNode) {
+            if (e.cancelable) e.preventDefault(); // Stop scrolling while dragging
             draggedNode.x = pos.x;
             draggedNode.y = pos.y;
         }
@@ -270,23 +272,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
+    // Add multiple event types to ensure capture
     canvas.addEventListener('mousedown', handleDown);
-    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mousemove', handleMove, {passive: false});
     window.addEventListener('mouseup', handleUp);
     
     canvas.addEventListener('touchstart', handleDown, {passive: false});
-    canvas.addEventListener('touchmove', handleMove, {passive: false});
+    window.addEventListener('touchmove', handleMove, {passive: false});
     window.addEventListener('touchend', handleUp);
     
     function animate() {
         try {
-            ctx.fillStyle = "rgba(10, 10, 20, 0.85)";
+            ctx.clearRect(0, 0, width, height); // Fallback sweep
+            ctx.fillStyle = "rgba(5, 5, 10, 0.9)";
             ctx.fillRect(0, 0, width, height);
             
+            // Draw jump wires
             ctx.shadowBlur = 10;
             ctx.shadowColor = "#7c4dff";
-            ctx.strokeStyle = "rgba(124, 77, 255, 0.6)";
-            ctx.lineWidth = 2;
+            ctx.strokeStyle = "rgba(124, 77, 255, 0.8)";
+            ctx.lineWidth = 3;
             
             ctx.beginPath();
             for (let i = 0; i < nodes.length - 1; i++) {
@@ -304,39 +309,28 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.shadowBlur = 0;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.font = "14px monospace";
+            ctx.font = "bold 15px monospace"; // Bolder text
             
+            // Draw particles
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw(ctx);
             }
             
+            // Draw nodes
             for (let i = 0; i < nodes.length; i++) {
                 nodes[i].draw(ctx);
             }
-            
-            if (runtimeError) {
-                ctx.fillStyle = "red";
-                ctx.font = "16px sans-serif";
-                ctx.fillText(runtimeError, width/2, 50);
-            }
-            
         } catch(err) {
-            runtimeError = "Error: " + err.message;
             ctx.fillStyle = "red";
-            ctx.fillText(runtimeError, 100, 50);
+            ctx.font = "16px Arial";
+            ctx.fillText("Render Exception: " + err.message, width/2, height/2);
         }
         
         requestAnimationFrame(animate);
     }
     
-    // Boot Initialization
-    try {
-        resize(); // sets width, height, creates nodes, particles
-        animate();
-    } catch(e) {
-        ctx.fillStyle = "red";
-        ctx.fillText("FAIL: " + e.message, 50, 50);
-    }
+    resize();
+    animate();
 });
 </script>
