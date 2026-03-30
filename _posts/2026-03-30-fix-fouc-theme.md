@@ -90,7 +90,8 @@ sequenceDiagram
     participant Body as <body> 渲染
     participant JS as 外部 JS 执行
 
-    box rgb(40, 40, 50) 优化前（发生闪烁）
+    rect rgb(40, 40, 50)
+        Note right of Browser: 【优化前】发生闪烁
         Browser->>Head: 解析开始
         Head->>CSS: 发起 premium.css 请求
         Browser->>Body: 开始渲染 (First Paint)
@@ -102,7 +103,8 @@ sequenceDiagram
         Note over Browser,Body: 🔄 重新计算样式并重绘<br>画面突变为浅色 (闪烁发生) 
     end
 
-    box rgb(20, 50, 40) 优化后（完美顺滑）
+    rect rgb(20, 50, 40)
+        Note right of Browser: 【优化后】完美顺滑
         Browser->>Head: 解析开始
         Note over Head: 执行内联 <script>
         Head->>Head: 发现浅色，给 <html> 加 class
