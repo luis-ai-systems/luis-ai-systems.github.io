@@ -20,7 +20,7 @@ comments: false
 
 .home .banner,
 .home .site-header {
-    background-color: {{ site.index.banner.background-color | default: '#4183c4'}};
+    background-color: transparent;
 }
 
 {% if site.index.banner.background-image %}
@@ -32,7 +32,7 @@ comments: false
 {% endif %}
 
 .home .banner .collection-head {
-    background: 0 0;
+    background: transparent;
     box-shadow: none;
     -webkit-box-shadow: none
 }
@@ -41,13 +41,140 @@ comments: false
     border-bottom: none
 }
 
+/* ===== Premium Home Banner ===== */
+.home .banner {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.home .banner .collection-head {
+    padding: 3rem 0 2.5rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+.home .banner .container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.home .banner .container:hover {
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.home .banner .collection-header {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.home .banner .collection-info {
+    margin-top: 12px;
+}
+
+.home .banner .collection-info .meta-info {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-right: 10px;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.home .banner .collection-info .meta-info:hover {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: rgba(0, 229, 255, 0.3);
+}
+
+.home .banner .collection-info .meta-info .octicon {
+    margin-right: 6px;
+    opacity: 0.7;
+}
+
+/* Hero decoration line */
+.home .banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.5), transparent);
+    z-index: 2;
+}
+
+/* ===== Header Section Title ===== */
+.home .content-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.home .content-section-title h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+}
+
+.home .content-section-title .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,229,255,0.3), transparent);
+}
+
+/* ===== Post count badge ===== */
+.post-count-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(124,77,255,0.15));
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 999px;
+    color: rgba(0,229,255,0.9);
+    font-weight: 600;
+}
+
+/* ===== Post grid fixes ===== */
+.home .repo-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
 @media (max-width:50em) {
   .home .collapsed .icon-bar {
-    background-color: white;
+    background-color: rgba(255,255,255,0.7);
   }
 
   .home .collection-head .collection-header {
-    font-size: 1.25em;
+    font-size: 1.5em !important;
+  }
+
+  .home .banner .collection-head {
+    padding: 2rem 0 1.5rem !important;
+  }
+
+  .home .banner .collection-info .meta-info {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    margin-right: 6px;
   }
 }
 </style>
@@ -94,27 +221,38 @@ comments: false
 <section class="container content">
     <div class="columns">
         <div class="column two-thirds" >
+            <div class="content-section-title">
+                <h2>最新文章</h2>
+                <span class="post-count-badge">{{ site.posts | size }} 篇</span>
+                <span class="section-line"></span>
+            </div>
             <ol class="repo-list">
               {% for post in site.posts %}
               {% if paginator.page == 1 %}
               {% if post.topmost == true %}
               <li class="repo-list-item">
                 <h3 class="repo-list-name">
-                  <a href="{{ site.url }}{{ post.url }}"><span class="top-most-flag">[置顶]</span>{{ post.title }}</a>
+                  <a href="{{ site.url }}{{ post.url }}"><span class="top-most-flag">置顶</span>{{ post.title }}</a>
                 </h3>
                 <p class="repo-list-description">
-                {{ post.excerpt | strip_html | strip }}
+                {{ post.excerpt | strip_html | strip | truncatewords: 40 }}
                 </p>
                 <p class="repo-list-meta">
                 <span class="meta-info">
                   <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
                 </span>
                 {% for cat in post.categories %}
-                <span class="meta-info">
+                <span class="meta-info cat-tag">
                   <span class="octicon octicon-file-directory"></span>
                   <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
                 </span>
                 {% endfor %}
+                {% if post.content %}
+                <span class="meta-info read-time">
+                  <span class="octicon octicon-clock"></span>
+                  {{ post.content | strip_html | strip_newlines | remove: " " | size | divided_by: 350 | plus: 1 }} min
+                </span>
+                {% endif %}
                 </p>
               </li>
               {% endif %}
@@ -128,18 +266,24 @@ comments: false
                   <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                 </h3>
                 <p class="repo-list-description">
-                {{ post.excerpt | strip_html | strip }}
+                {{ post.excerpt | strip_html | strip | truncatewords: 40 }}
                 </p>
                 <p class="repo-list-meta">
                 <span class="meta-info">
                   <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
                 </span>
                 {% for cat in post.categories %}
-                <span class="meta-info">
+                <span class="meta-info cat-tag">
                   <span class="octicon octicon-file-directory"></span>
                   <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
                 </span>
                 {% endfor %}
+                {% if post.content %}
+                <span class="meta-info read-time">
+                  <span class="octicon octicon-clock"></span>
+                  {{ post.content | strip_html | strip_newlines | remove: " " | size | divided_by: 350 | plus: 1 }} min
+                </span>
+                {% endif %}
                 </p>
               </li>
               {% endif %}
@@ -187,7 +331,7 @@ comments: false
 
         {% for count in (midStartPage..midEndPage) %}
           {% if count == paginator.page %}
-            <a href="jaavascript:;" class="active btn btn-outline">{{count}}</a>
+            <a href="javascript:;" class="active btn btn-outline">{{count}}</a>
           {% else %}
             <a href="{{ site.url }}/page{{count}}"  class="btn btn-outline">{{count}}</a>
           {% endif %}
@@ -200,7 +344,7 @@ comments: false
 
         {% if paginator.total_pages > 1 %}
           {% if paginator.page == paginator.total_pages %}
-              <a href="jaavascript:;" class="active btn btn-outline">{{paginator.total_pages}}</a>
+              <a href="javascript:;" class="active btn btn-outline">{{paginator.total_pages}}</a>
           {% else %}
               <a href="{{ site.url }}/page{{paginator.total_pages}}"  class="btn btn-outline">{{paginator.total_pages}}</a>
           {% endif %}
