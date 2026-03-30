@@ -1,223 +1,363 @@
 ---
 layout: default
-title: "二次元边界 (ACG Pretext)"
+title: "绝对领域 (Absolute Terror Field)"
 permalink: /acg/
 ---
 
-<!-- Background Container -->
-<div class="acg-container">
-    <div class="acg-overlay"></div>
+<!-- Fullscreen Interactive Canvas Container -->
+<div class="acg-physics-container">
+    <canvas id="acgCanvas"></canvas>
     
-    <!-- Cyber Glass Panel -->
-    <div class="cyber-glass">
-        <h1 id="acg-title"></h1>
-        <p id="acg-subtitle"></p>
-        
-        <div class="terminal-box">
-            <span id="typing-text"></span><span class="cursor">_</span>
-        </div>
-        
-        <a href="https://github.com/chenglou/pretext" target="_blank" class="cyber-btn">
-            Explore Pretext <span class="octicon octicon-link-external"></span>
+    <!-- UI Overlay -->
+    <div class="cyber-overlay-ui">
+        <h2>『 自动排版·绝对避让矩阵 』</h2>
+        <p>Pretext Concept / 拖拽发光节点，观察跳线与字母的重力避让</p>
+        <a href="https://github.com/chenglou/pretext" target="_blank" class="cyber-btn-small">
+            Insp. by Chenglou/Pretext <span class="octicon octicon-link-external"></span>
         </a>
     </div>
 </div>
 
 <style>
-/* Reset some default layout constraints for this page */
+/* Override default layout padding */
 .container {
     max-width: 100% !important;
     padding: 0 !important;
 }
-
 body {
-    overflow-x: hidden;
+    overflow: hidden; /* Prevent scrolling while dragging */
 }
 
-/* Fullscreen Background */
-.acg-container {
+.acg-physics-container {
     position: relative;
     width: 100vw;
     height: 100vh;
-    min-height: 800px;
+    margin-top: -60px; /* Offset header */
     background-image: url('{{ site.url }}/assets/images/acg-bg.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -60px; /* Offset the header height */
     overflow: hidden;
 }
 
-/* Subtle Gradient Overlay */
-.acg-overlay {
+/* Glassmorphism UI */
+.cyber-overlay-ui {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(10, 10, 26, 0.4) 0%, rgba(124, 77, 255, 0.2) 100%);
-    z-index: 1;
-}
-
-/* Glassmorphism Panel */
-.cyber-glass {
-    position: relative;
-    z-index: 2;
-    background: rgba(15, 15, 25, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 3rem 4rem;
-    max-width: 800px;
-    width: 90%;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 25, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px 40px;
     text-align: center;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                0 0 40px rgba(0, 229, 255, 0.2);
-    animation: floatPanel 6s ease-in-out infinite;
+    pointer-events: none; /* Let clicks pass through to canvas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(124, 77, 255, 0.2);
+    z-index: 10;
 }
 
-@keyframes floatPanel {
-    0%   { transform: translateY(0px); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,229,255,0.2); }
-    50%  { transform: translateY(-15px); box-shadow: 0 40px 70px rgba(0,0,0,0.5), 0 0 60px rgba(124,77,255,0.3); }
-    100% { transform: translateY(0px); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,229,255,0.2); }
-}
-
-/* Typography elements */
-.cyber-glass h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0 0 1rem 0;
-    background: linear-gradient(135deg, #00e5ff 0%, #7c4dff 100%);
+.cyber-overlay-ui h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #00e5ff, #7c4dff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
-.cyber-glass p {
-    font-size: 1.2rem;
-    color: #e8e8f0;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
+.cyber-overlay-ui p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
 }
 
-/* Terminal Typing Effect */
-.terminal-box {
-    background: rgba(0, 0, 5, 0.8);
-    border-left: 3px solid #00e5ff;
-    border-radius: 4px;
-    padding: 1.5rem;
-    text-align: left;
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 1.1rem;
-    color: #a9b7c6;
-    margin-bottom: 3rem;
-    min-height: 120px;
-}
-
-.terminal-box .cursor {
+.cyber-btn-small {
+    pointer-events: auto; /* Re-enable clicks for the button */
     display: inline-block;
-    width: 10px;
-    background-color: #00e5ff;
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Cyber Button */
-.cyber-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background: linear-gradient(90deg, #00e5ff, #7c4dff);
-    color: white !important;
+    padding: 8px 16px;
+    background: rgba(124, 77, 255, 0.2);
+    border: 1px solid rgba(124, 77, 255, 0.5);
+    color: #fff !important;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 5px 15px rgba(124, 77, 255, 0.4);
+    font-size: 0.8rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+.cyber-btn-small:hover {
+    background: rgba(124, 77, 255, 0.6);
+    box-shadow: 0 0 15px rgba(124, 77, 255, 0.5);
 }
 
-.cyber-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 229, 255, 0.6);
-}
-
-/* Fix for Light Mode - Force the container to look good even inside light theme shell */
-html.light-theme .cyber-glass {
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-html.light-theme .cyber-glass p {
-    color: #1a1a2e;
-}
-html.light-theme .terminal-box {
-    background: rgba(240, 242, 245, 0.9);
-    color: #2d2d3a;
+#acgCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Typing Effect Logic
-    const titleText = "次元链接 / ACG Pretext";
-    const subtitleText = "A beautiful text layout inspired by React Pretext, powered by pure Static Magic.";
-    const codeLines = [
-        "> Initializing Pretext Engine...",
-        "> Measuring layout flawlessly without DOM reflows...",
-        "> Loading [Anime.js] + [Cyber.css] modules...",
-        "> Connection established. Render complete."
-    ];
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("acgCanvas");
+    const ctx = canvas.getContext("2d");
     
-    // Animate Header
-    let titleEl = document.getElementById("acg-title");
-    let subtitleEl = document.getElementById("acg-subtitle");
+    let width, height;
+    let particles = [];
+    let nodes = [];
     
-    setTimeout(() => {
-        titleEl.textContent = titleText;
-        subtitleEl.textContent = subtitleText;
-        titleEl.style.opacity = 0;
-        subtitleEl.style.opacity = 0;
-        
-        let t = 0;
-        let fade = setInterval(() => {
-            t += 0.05;
-            titleEl.style.opacity = t;
-            subtitleEl.style.opacity = t;
-            if (t >= 1) clearInterval(fade);
-        }, 50);
-        
-        // Start typing after header fades in
-        setTimeout(typeTerminal, 1000);
-    }, 500);
-
-    // Terminal Typer
-    const terminalEl = document.getElementById("typing-text");
-    let lineIdx = 0;
-    let charIdx = 0;
+    // The "Lexicon" for the sea of letters (ACG/Cyberpunk vibes)
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン零一二三四五六七八九十界虚空神机同步律动";
     
-    function typeTerminal() {
-        if (lineIdx < codeLines.length) {
-            if (charIdx === 0 && lineIdx > 0) {
-                terminalEl.innerHTML += "<br/>";
-            }
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initParticles();
+    }
+    window.addEventListener('resize', resize);
+    
+    // --- Physics Nodes (The draggable anchors) ---
+    class Node {
+        constructor(x, y, label) {
+            this.x = x;
+            this.y = y;
+            this.radius = 90; // Avoidance radius
+            this.coreRadius = 15;
+            this.label = label;
+            this.isDragging = false;
+        }
+        draw(ctx) {
+            // Glow effect
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = "#00e5ff";
             
-            if (charIdx < codeLines[lineIdx].length) {
-                terminalEl.innerHTML += codeLines[lineIdx].charAt(charIdx);
-                charIdx++;
-                setTimeout(typeTerminal, 30 + Math.random() * 50); // random typing speed
-            } else {
-                lineIdx++;
-                charIdx = 0;
-                setTimeout(typeTerminal, 600); // pause between lines
+            // Outer Avoidance Ring (dashed)
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = "rgba(0, 229, 255, 0.2)";
+            ctx.setLineDash([5, 5]);
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Inner Core
+            ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.coreRadius, 0, Math.PI * 2);
+            ctx.fillStyle = this.isDragging ? "#fff" : "rgba(124, 77, 255, 0.8)";
+            ctx.fill();
+            ctx.strokeStyle = "#00e5ff";
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // Label
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = "#00e5ff";
+            ctx.font = "12px monospace";
+            ctx.fillText(this.label, this.x + 25, this.y + 4);
+        }
+    }
+    
+    // --- Text Particles ---
+    class Particle {
+        constructor(x, y) {
+            this.baseX = x;
+            this.baseY = y;
+            this.x = x;
+            this.y = y;
+            this.char = charset[Math.floor(Math.random() * charset.length)];
+            // Randomize color slightly for depth
+            const colors = ["rgba(255,255,255,0.7)", "rgba(0, 229, 255, 0.5)", "rgba(124, 77, 255, 0.6)"];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.vx = 0;
+            this.vy = 0;
+        }
+        
+        update() {
+            // Elastic return to base position
+            let dx = this.baseX - this.x;
+            let dy = this.baseY - this.y;
+            this.vx += dx * 0.05; // spring constant
+            this.vy += dy * 0.05;
+            
+            // Node repulsion (自动避让)
+            nodes.forEach(node => {
+                let distX = this.x - node.x;
+                let distY = this.y - node.y;
+                let dist = Math.sqrt(distX * distX + distY * distY);
+                
+                if (dist < node.radius) {
+                    let force = (node.radius - dist) / node.radius;
+                    let angle = Math.atan2(distY, distX);
+                    // Add repulsive force
+                    this.vx += Math.cos(angle) * force * 5;
+                    this.vy += Math.sin(angle) * force * 5;
+                    // Highlight alarmed particles
+                    this.currentColor = "#ff4081"; 
+                } else {
+                    this.currentColor = this.color;
+                }
+            });
+            
+            // Friction/Damping
+            this.vx *= 0.8;
+            this.vy *= 0.8;
+            
+            this.x += this.vx;
+            this.y += this.vy;
+        }
+        
+        draw(ctx) {
+            ctx.fillStyle = this.currentColor || this.color;
+            ctx.fillText(this.char, this.x, this.y);
+        }
+    }
+    
+    function initParticles() {
+        particles = [];
+        const spacing = 22; // Grid spacing for letters
+        ctx.font = "14px monospace";
+        for (let y = 0; y < height; y += spacing) {
+            for (let x = 0; x < width; x += spacing) {
+                // Skip some to make it look like tech-data blocks rather than a solid wall
+                if (Math.random() > 0.3) {
+                    particles.push(new Particle(x, y));
+                }
             }
         }
     }
+    
+    // --- Mouse Interaction ---
+    let mouse = { x: 0, y: 0, isDown: false };
+    let draggedNode = null;
+    
+    canvas.addEventListener('mousedown', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.isDown = true;
+        
+        // Find if clicked on a node
+        for (let i = nodes.length - 1; i >= 0; i--) {
+            let dx = mouse.x - nodes[i].x;
+            let dy = mouse.y - nodes[i].y;
+            if (dx * dx + dy * dy < 400) { // Click radius ~20px
+                draggedNode = nodes[i];
+                draggedNode.isDragging = true;
+                break;
+            }
+        }
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!mouse.isDown) return;
+        const rect = canvas.getBoundingClientRect();
+        if (draggedNode) {
+            draggedNode.x = e.clientX - rect.left;
+            draggedNode.y = e.clientY - rect.top;
+        }
+    });
+    
+    window.addEventListener('mouseup', () => {
+        mouse.isDown = false;
+        if (draggedNode) {
+            draggedNode.isDragging = false;
+            draggedNode = null;
+        }
+    });
+    
+    // Touch support
+    canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.touches[0].clientX - rect.left;
+        mouse.y = e.touches[0].clientY - rect.top;
+        mouse.isDown = true;
+        
+        for (let i = nodes.length - 1; i >= 0; i--) {
+            let dx = mouse.x - nodes[i].x;
+            let dy = mouse.y - nodes[i].y;
+            if (dx * dx + dy * dy < 1600) { // Larger touch target
+                draggedNode = nodes[i];
+                draggedNode.isDragging = true;
+                break;
+            }
+        }
+    }, {passive: false});
+    
+    canvas.addEventListener('touchmove', (e) => {
+        if (!mouse.isDown) return;
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        if (draggedNode) {
+            draggedNode.x = e.touches[0].clientX - rect.left;
+            draggedNode.y = e.touches[0].clientY - rect.top;
+        }
+    }, {passive: false});
+    
+    window.addEventListener('touchend', () => {
+        mouse.isDown = false;
+        if (draggedNode) {
+            draggedNode.isDragging = false;
+            draggedNode = null;
+        }
+    });
+    
+    // --- Render Loop ---
+    function animate() {
+        // Semi-transparent clear for motion blur trail effect on lines
+        ctx.fillStyle = "rgba(10, 10, 20, 0.85)";
+        ctx.fillRect(0, 0, width, height);
+        
+        // Draw Jump Wires (跳线)
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#7c4dff";
+        ctx.strokeStyle = "rgba(124, 77, 255, 0.6)";
+        ctx.lineWidth = 2;
+        
+        ctx.beginPath();
+        for (let i = 0; i < nodes.length - 1; i++) {
+            let current = nodes[i];
+            let next = nodes[i + 1];
+            
+            // Draw a bezier curve between nodes
+            ctx.moveTo(current.x, current.y);
+            let cp1x = current.x + (next.x - current.x) / 2;
+            let cp1y = current.y;
+            let cp2x = current.x + (next.x - current.x) / 2;
+            let cp2y = next.y;
+            ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, next.x, next.y);
+        }
+        ctx.stroke();
+        
+        // Reset shadow for text
+        ctx.shadowBlur = 0;
+        
+        // Update and draw particles
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw(ctx);
+        }
+        
+        // Draw Nodes
+        for (let i = 0; i < nodes.length; i++) {
+            nodes[i].draw(ctx);
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    // Initialize
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    
+    // Setup initial nodes
+    nodes.push(new Node(width * 0.3, height * 0.4, "NODE-ALPHA"));
+    nodes.push(new Node(width * 0.5, height * 0.6, "NEXUS-CORE"));
+    nodes.push(new Node(width * 0.7, height * 0.3, "DATA-SINK"));
+    
+    initParticles();
+    animate();
 });
 </script>
