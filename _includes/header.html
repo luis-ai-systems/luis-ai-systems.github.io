@@ -98,6 +98,26 @@
       gtag('config', '{{ site.google.analytics_id }}');
     </script>
     {% endif %}
+
+    <!-- CRITICAL: Blocking theme detection to prevent FOUC -->
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-theme');
+        }
+        document.documentElement.classList.add('theme-resolved');
+      })();
+    </script>
+    <style>
+      /* Hide body until theme is resolved to prevent flash */
+      html:not(.theme-resolved) body {
+        visibility: hidden;
+      }
+      html.theme-resolved body {
+        visibility: visible;
+      }
+    </style>
 </head>
 <body class="{{ page.class }}" data-mz="{{ page.class }}">
     <header class="site-header">

@@ -1091,6 +1091,29 @@ input:checked + .slider:before {
 /* ============================================
    17. LIGHT THEME - REFINED
    ============================================ */
+
+/* Applied by blocking <head> script BEFORE body exists - prevents FOUC */
+html.light-theme {
+    --color-bg-deep: #f8f9fc;
+    --color-bg-primary: #ffffff;
+    --color-bg-elevated: #f0f2f5;
+    --color-bg-card: rgba(255, 255, 255, 0.85);
+    --color-bg-glass: rgba(255, 255, 255, 0.7);
+    --color-accent-cyan: #0066cc;
+    --color-accent-purple: #6200ee;
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #555566;
+    --color-text-muted: #888899;
+    --color-text-heading: #0a0a15;
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-border-hover: rgba(0, 102, 204, 0.3);
+    --color-border-subtle: rgba(0, 0, 0, 0.04);
+    --shadow-glow-cyan: 0 0 20px rgba(0, 102, 204, 0.1);
+    background: #f8f9fc !important;
+    color: #1a1a2e !important;
+}
+
+/* Synced to body by main.js after DOMContentLoaded */
 body.light-theme {
     --color-bg-deep: #f8f9fc;
     --color-bg-primary: #ffffff;

@@ -850,6 +850,11 @@ body.light-theme .theme-switch:hover .slider {
 }
 
 /* --- Light Theme Overrides --- */
+html.light-theme {
+    background-color: #f8f9fc;
+    color: #333;
+}
+
 body.light-theme {
     background-color: #ffffff;
     color: #333;

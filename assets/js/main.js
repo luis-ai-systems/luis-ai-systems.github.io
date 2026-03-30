@@ -56,10 +56,10 @@ jQuery(function() {
   // ========================
   const themeToggle = document.getElementById('theme-toggle');
   const body = document.body;
+  const html = document.documentElement;
 
-  // Check stored theme preference
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme === 'light') {
+  // Sync body class with html class (set by blocking script in <head>)
+  if (html.classList.contains('light-theme')) {
     body.classList.add('light-theme');
     if (themeToggle) {
       themeToggle.checked = true;
@@ -72,9 +72,11 @@ jQuery(function() {
       body.style.transition = 'background-color 0.5s ease, color 0.4s ease';
 
       if (themeToggle.checked) {
+        html.classList.add('light-theme');
         body.classList.add('light-theme');
         localStorage.setItem('theme', 'light');
       } else {
+        html.classList.remove('light-theme');
         body.classList.remove('light-theme');
         localStorage.setItem('theme', 'dark');
       }
