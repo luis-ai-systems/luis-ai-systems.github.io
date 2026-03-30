@@ -7,16 +7,16 @@
             <div style="width:100%;height:1px;background:linear-gradient(90deg, transparent, rgba(0,229,255,0.2), rgba(124,77,255,0.2), transparent);margin-bottom:30px;"></div>
 
             <div class="copyright left mobile-block" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
-                    <span style="color:rgba(255,255,255,0.4);">© {{ site.since }} – {{ "now" | date: "%Y" }}</span>
-                    <span title="{{ site.author}}" style="font-weight:600;color:rgba(255,255,255,0.6);">{{ site.author }}</span>
-                    <span style="font-size:0.78em;color:rgba(255,255,255,0.2);">·</span>
-                    <span style="font-size:0.78em;color:rgba(255,255,255,0.2);">Powered by <a href="https://github.com/mzlogin/mzlogin.github.io" target="_blank" style="color:rgba(255,255,255,0.3) !important;font-weight:400 !important;">mzlogin</a></span>
-                    <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible" style="color:rgba(0,229,255,0.6) !important;">↑ TOP</a>
+                    <span style="color:var(--color-text-muted);">© {{ site.since }} – {{ "now" | date: "%Y" }}</span>
+                    <span title="{{ site.author}}" style="font-weight:600;color:var(--color-text-secondary);">{{ site.author }}</span>
+                    <span style="font-size:0.78em;color:var(--color-text-muted);">·</span>
+                    <span style="font-size:0.78em;color:var(--color-text-muted);">Powered by <a href="https://github.com/mzlogin/mzlogin.github.io" target="_blank" style="color:var(--color-text-secondary) !important;font-weight:400 !important;">mzlogin</a></span>
+                    <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible" style="color:var(--color-accent-cyan) !important;">↑ TOP</a>
             </div>
 
             <ul class="site-footer-links right mobile-hidden">
                 <li>
-                    <a href="javascript:window.scrollTo(0,0)" style="color:rgba(0,229,255,0.5) !important;font-weight:500 !important;">↑ TOP</a>
+                    <a href="javascript:window.scrollTo(0,0)" style="color:var(--color-accent-cyan) !important;font-weight:500 !important;">↑ TOP</a>
                 </li>
             </ul>
             <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
