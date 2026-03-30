@@ -108,8 +108,34 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン零一二三四五六七八九十界虚空神机同步律动";
     
+    // Theme Awareness
+    function isLightTheme() {
+        return document.documentElement.classList.contains('light-theme');
+    }
+    
+    function getThemeColors() {
+        if (isLightTheme()) {
+            return {
+                bg: "rgba(248, 249, 252, 0.9)",
+                text: ["rgba(26, 26, 46, 0.8)", "rgba(0, 102, 204, 0.7)", "rgba(98, 0, 238, 0.7)"],
+                nodeGlow: "rgba(0, 102, 204, 0.3)",
+                nodeCore: "rgba(98, 0, 238, 0.8)",
+                nodeAlert: "#ff2a55",
+                wire: "rgba(98, 0, 238, 0.5)"
+            };
+        } else {
+            return {
+                bg: "rgba(5, 5, 10, 0.9)",
+                text: ["rgba(255, 255, 255, 0.8)", "rgba(0, 229, 255, 0.6)", "rgba(124, 77, 255, 0.7)"],
+                nodeGlow: "rgba(0, 229, 255, 0.3)",
+                nodeCore: "rgba(124, 77, 255, 0.8)",
+                nodeAlert: "#00e5ff",
+                wire: "rgba(124, 77, 255, 0.8)"
+            };
+        }
+    }
+    
     function resize() {
-        // Fallback robust sizing
         let rect = canvas.parentElement.getBoundingClientRect();
         width = canvas.width = (rect.width > 0 ? rect.width : window.innerWidth) || 1200;
         height = canvas.height = (rect.height > 0 ? rect.height : window.innerHeight) || 800;
@@ -136,13 +162,13 @@ document.addEventListener("DOMContentLoaded", () => {
             this.label = label;
             this.isDragging = false;
         }
-        draw(ctx) {
+        draw(ctx, theme) {
             ctx.shadowBlur = 20;
-            ctx.shadowColor = "#00e5ff";
+            ctx.shadowColor = theme.nodeAlert;
             
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.strokeStyle = "rgba(0, 229, 255, 0.2)";
+            ctx.strokeStyle = theme.nodeGlow;
             if (ctx.setLineDash) ctx.setLineDash([5, 5]);
             ctx.lineWidth = 2;
             ctx.stroke();
@@ -150,15 +176,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (ctx.setLineDash) ctx.setLineDash([]);
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.coreRadius, 0, Math.PI * 2);
-            ctx.fillStyle = this.isDragging ? "#fff" : "rgba(124, 77, 255, 0.8)";
+            ctx.fillStyle = this.isDragging ? theme.nodeAlert : theme.nodeCore;
             ctx.fill();
-            ctx.strokeStyle = "#00e5ff";
+            ctx.strokeStyle = theme.nodeAlert;
             ctx.lineWidth = 3;
             ctx.stroke();
             
             ctx.shadowBlur = 0;
-            ctx.fillStyle = "#00e5ff";
-            ctx.font = "12px monospace";
+            ctx.fillStyle = theme.nodeAlert;
+            ctx.font = "bold 12px monospace";
             ctx.fillText(this.label, this.x + 25, this.y + 4);
         }
     }
@@ -169,23 +195,20 @@ document.addEventListener("DOMContentLoaded", () => {
             this.baseY = y;
             this.x = x;
             this.y = y;
-            let cIndex = Math.floor(Math.random() * charset.length);
-            this.char = charset[cIndex] || "X";
-            
-            const colorList = ["rgba(255, 255, 255, 0.8)", "rgba(0, 229, 255, 0.6)", "rgba(124, 77, 255, 0.7)"];
-            this.color = colorList[Math.floor(Math.random() * colorList.length)];
+            this.char = charset[Math.floor(Math.random() * charset.length)] || "X";
+            this.colorIndex = Math.floor(Math.random() * 3);
             this.vx = 0;
             this.vy = 0;
-            this.currentColor = this.color;
+            this.alarmed = false;
         }
         
-        update() {
+        update(theme) {
             let dx = this.baseX - this.x;
             let dy = this.baseY - this.y;
             this.vx += dx * 0.08; 
             this.vy += dy * 0.08;
             
-            let alarmed = false;
+            this.alarmed = false;
             for(let i=0; i<nodes.length; i++) {
                 let node = nodes[i];
                 let distX = this.x - node.x;
@@ -194,22 +217,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 if (dist < node.radius) {
                     let force = (node.radius - dist) / node.radius;
-                    // Ensure strong push
+                    // Strong push
                     this.vx += (distX / dist) * force * 10;
                     this.vy += (distY / dist) * force * 10;
-                    alarmed = true;
+                    this.alarmed = true;
                 }
             }
             
-            this.currentColor = alarmed ? "#00e5ff" : this.color;
             this.vx *= 0.7;
             this.vy *= 0.7;
             this.x += this.vx;
             this.y += this.vy;
         }
         
-        draw(ctx) {
-            ctx.fillStyle = this.currentColor;
+        draw(ctx, theme) {
+            ctx.fillStyle = this.alarmed ? theme.nodeAlert : theme.text[this.colorIndex];
             ctx.fillText(this.char, this.x, this.y);
         }
     }
@@ -219,7 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const spacing = 22; 
         for (let y = 10; y < height; y += spacing) {
             for (let x = 10; x < width; x += spacing) {
-                // Populate heavily to ensure visibility
                 if(Math.random() > 0.2) {
                     particles.push(new Particle(x, y));
                 }
@@ -246,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = nodes.length - 1; i >= 0; i--) {
             let dx = mouse.x - nodes[i].x;
             let dy = mouse.y - nodes[i].y;
-            if (dx * dx + dy * dy < 2500) { // Large click radius for trackpads
+            if (dx * dx + dy * dy < 2500) { 
                 draggedNode = nodes[i];
                 draggedNode.isDragging = true;
                 break;
@@ -258,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!mouse.isDown) return;
         const pos = getEventPos(e);
         if (draggedNode) {
-            if (e.cancelable) e.preventDefault(); // Stop scrolling while dragging
+            if (e.cancelable) e.preventDefault(); 
             draggedNode.x = pos.x;
             draggedNode.y = pos.y;
         }
@@ -272,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // Add multiple event types to ensure capture
     canvas.addEventListener('mousedown', handleDown);
     window.addEventListener('mousemove', handleMove, {passive: false});
     window.addEventListener('mouseup', handleUp);
@@ -281,16 +301,23 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('touchmove', handleMove, {passive: false});
     window.addEventListener('touchend', handleUp);
     
+    // Observers to re-init particles if theme changes
+    const observer = new MutationObserver(() => {
+        // Just let the render loop pick up colors dynamically
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    
     function animate() {
         try {
-            ctx.clearRect(0, 0, width, height); // Fallback sweep
-            ctx.fillStyle = "rgba(5, 5, 10, 0.9)";
+            const theme = getThemeColors();
+            ctx.clearRect(0, 0, width, height); 
+            ctx.fillStyle = theme.bg;
             ctx.fillRect(0, 0, width, height);
             
             // Draw jump wires
             ctx.shadowBlur = 10;
-            ctx.shadowColor = "#7c4dff";
-            ctx.strokeStyle = "rgba(124, 77, 255, 0.8)";
+            ctx.shadowColor = theme.wire;
+            ctx.strokeStyle = theme.wire;
             ctx.lineWidth = 3;
             
             ctx.beginPath();
@@ -309,17 +336,15 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.shadowBlur = 0;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.font = "bold 15px monospace"; // Bolder text
+            ctx.font = "bold 15px monospace";
             
-            // Draw particles
             for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw(ctx);
+                particles[i].update(theme);
+                particles[i].draw(ctx, theme);
             }
             
-            // Draw nodes
             for (let i = 0; i < nodes.length; i++) {
-                nodes[i].draw(ctx);
+                nodes[i].draw(ctx, theme);
             }
         } catch(err) {
             ctx.fillStyle = "red";
