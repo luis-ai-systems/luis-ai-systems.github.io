@@ -1,0 +1,223 @@
+---
+layout: default
+title: "二次元边界 (ACG Pretext)"
+permalink: /acg/
+---
+
+<!-- Background Container -->
+<div class="acg-container">
+    <div class="acg-overlay"></div>
+    
+    <!-- Cyber Glass Panel -->
+    <div class="cyber-glass">
+        <h1 id="acg-title"></h1>
+        <p id="acg-subtitle"></p>
+        
+        <div class="terminal-box">
+            <span id="typing-text"></span><span class="cursor">_</span>
+        </div>
+        
+        <a href="https://github.com/chenglou/pretext" target="_blank" class="cyber-btn">
+            Explore Pretext <span class="octicon octicon-link-external"></span>
+        </a>
+    </div>
+</div>
+
+<style>
+/* Reset some default layout constraints for this page */
+.container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Fullscreen Background */
+.acg-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 800px;
+    background-image: url('{{ site.url }}/assets/images/acg-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -60px; /* Offset the header height */
+    overflow: hidden;
+}
+
+/* Subtle Gradient Overlay */
+.acg-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(10, 10, 26, 0.4) 0%, rgba(124, 77, 255, 0.2) 100%);
+    z-index: 1;
+}
+
+/* Glassmorphism Panel */
+.cyber-glass {
+    position: relative;
+    z-index: 2;
+    background: rgba(15, 15, 25, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem 4rem;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 40px rgba(0, 229, 255, 0.2);
+    animation: floatPanel 6s ease-in-out infinite;
+}
+
+@keyframes floatPanel {
+    0%   { transform: translateY(0px); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,229,255,0.2); }
+    50%  { transform: translateY(-15px); box-shadow: 0 40px 70px rgba(0,0,0,0.5), 0 0 60px rgba(124,77,255,0.3); }
+    100% { transform: translateY(0px); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,229,255,0.2); }
+}
+
+/* Typography elements */
+.cyber-glass h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, #00e5ff 0%, #7c4dff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+}
+
+.cyber-glass p {
+    font-size: 1.2rem;
+    color: #e8e8f0;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Terminal Typing Effect */
+.terminal-box {
+    background: rgba(0, 0, 5, 0.8);
+    border-left: 3px solid #00e5ff;
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: left;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 1.1rem;
+    color: #a9b7c6;
+    margin-bottom: 3rem;
+    min-height: 120px;
+}
+
+.terminal-box .cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: #00e5ff;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Cyber Button */
+.cyber-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #00e5ff, #7c4dff);
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(124, 77, 255, 0.4);
+}
+
+.cyber-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 229, 255, 0.6);
+}
+
+/* Fix for Light Mode - Force the container to look good even inside light theme shell */
+html.light-theme .cyber-glass {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+html.light-theme .cyber-glass p {
+    color: #1a1a2e;
+}
+html.light-theme .terminal-box {
+    background: rgba(240, 242, 245, 0.9);
+    color: #2d2d3a;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Typing Effect Logic
+    const titleText = "次元链接 / ACG Pretext";
+    const subtitleText = "A beautiful text layout inspired by React Pretext, powered by pure Static Magic.";
+    const codeLines = [
+        "> Initializing Pretext Engine...",
+        "> Measuring layout flawlessly without DOM reflows...",
+        "> Loading [Anime.js] + [Cyber.css] modules...",
+        "> Connection established. Render complete."
+    ];
+    
+    // Animate Header
+    let titleEl = document.getElementById("acg-title");
+    let subtitleEl = document.getElementById("acg-subtitle");
+    
+    setTimeout(() => {
+        titleEl.textContent = titleText;
+        subtitleEl.textContent = subtitleText;
+        titleEl.style.opacity = 0;
+        subtitleEl.style.opacity = 0;
+        
+        let t = 0;
+        let fade = setInterval(() => {
+            t += 0.05;
+            titleEl.style.opacity = t;
+            subtitleEl.style.opacity = t;
+            if (t >= 1) clearInterval(fade);
+        }, 50);
+        
+        // Start typing after header fades in
+        setTimeout(typeTerminal, 1000);
+    }, 500);
+
+    // Terminal Typer
+    const terminalEl = document.getElementById("typing-text");
+    let lineIdx = 0;
+    let charIdx = 0;
+    
+    function typeTerminal() {
+        if (lineIdx < codeLines.length) {
+            if (charIdx === 0 && lineIdx > 0) {
+                terminalEl.innerHTML += "<br/>";
+            }
+            
+            if (charIdx < codeLines[lineIdx].length) {
+                terminalEl.innerHTML += codeLines[lineIdx].charAt(charIdx);
+                charIdx++;
+                setTimeout(typeTerminal, 30 + Math.random() * 50); // random typing speed
+            } else {
+                lineIdx++;
+                charIdx = 0;
+                setTimeout(typeTerminal, 600); // pause between lines
+            }
+        }
+    }
+});
+</script>

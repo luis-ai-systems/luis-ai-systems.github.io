@@ -90,6 +90,10 @@ navs:
     label: 片段
 
   -
+    href: /acg/
+    label: 次元
+
+  -
     href: /wiki/
     label: 维基
 
