@@ -60,7 +60,20 @@
     {% if page.mermaid %}
     <script type="module">
       import mermaid from 'https://fastly.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: false });
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'dark',
+        securityLevel: 'loose',
+        themeVariables: {
+          primaryColor: '#1a1a2e',
+          primaryTextColor: '#e8e8f0',
+          primaryBorderColor: '#00e5ff',
+          lineColor: '#7c4dff',
+          secondaryColor: '#0f0f18',
+          tertiaryColor: '#050508',
+          fontSize: '14px'
+        }
+      });
       await mermaid.run({
         nodes: document.querySelectorAll('pre code.language-mermaid'),
       });

@@ -4,6 +4,7 @@ title: "从零开始的数字虚空探险"
 date: 2026-03-24 10:00:00 +0800
 categories: [随笔, 二次元]
 tags: [日记, 探险, 极客]
+mermaid: true
 ---
 
 欢迎来到我的全新结界。经过了数次的重构与设计，这里终于拥有了我理想中的黑客与二次元交织的极致冷酷感。
@@ -30,37 +31,37 @@ def cast_magic():
 
 ```mermaid
 graph TD
-    subgraph "前端 (Vue3 Client)"
-        WSNB[WebSocketNotificationBell.vue] --> WSM[WebSocketManager.js]
-        WSM -->|"1. 建立连接 (Token)"| WS_NATIVE[Native WebSocket]
+    subgraph FE["前端 - Vue3 Client"]
+        WSNB["WebSocketNotificationBell.vue"] --> WSM["WebSocketManager.js"]
+        WSM -->|"1. 建立连接"| WS_NATIVE["Native WebSocket"]
         WSM -->|"2. 发送消息/心跳"| WS_NATIVE
         WS_NATIVE -->|"3. 接收实时消息"| WSM
         WSM -->|"4. 分发消息"| WSNB
-        WSNB -->|"REST API"| API_GATEWAY[Spring Boot REST Controllers]
+        WSNB -->|"REST API"| API_GATEWAY["Spring Boot REST Controllers"]
     end
 
-    subgraph "后端 (Spring Boot Server)"
-        WS_NATIVE <==>|"WebSocket Protocol (ws://)"| WS_CONFIG[WebSocketConfig]
-        WS_CONFIG --> HSI[ChatHandshakeInterceptor]
-        HSI --> ST[Sa-Token Auth]
+    subgraph BE["后端 - Spring Boot Server"]
+        WS_NATIVE <-->|"WebSocket ws://"| WS_CONFIG["WebSocketConfig"]
+        WS_CONFIG --> HSI["ChatHandshakeInterceptor"]
+        HSI --> ST["Sa-Token Auth"]
         ST -->|"UID"| WS_CONFIG
-        
-        WS_CONFIG --> CWH[ChatWebSocketHandler]
-        
-        subgraph "消息处理逻辑"
-            CWH -->|"异步执行"| TE[TaskExecutors]
-            TE -->|"私聊/群聊"| PMG[Private/Group Message Logic]
-            TE -->|"离线消息"| OM[Offline Message Logic]
-            TE -->|"ACK确认"| ACK[Message ACK Logic]
+
+        WS_CONFIG --> CWH["ChatWebSocketHandler"]
+
+        subgraph MSG["消息处理逻辑"]
+            CWH -->|"异步执行"| TE["TaskExecutors"]
+            TE -->|"私聊/群聊"| PMG["Private/Group Message Logic"]
+            TE -->|"离线消息"| OM["Offline Message Logic"]
+            TE -->|"ACK确认"| ACK["Message ACK Logic"]
         end
 
-        subgraph "存储 & 缓存"
-            PMG --> DB_MSG[(MySQL: chat_message)]
-            OM --> DB_OFFLINE[(MySQL: chat_offline_message)]
-            PMG --> CACHE_GROUP[Group Member Cache]
+        subgraph STORE["存储与缓存"]
+            PMG --> DB_MSG[("MySQL: chat_message")]
+            OM --> DB_OFFLINE[("MySQL: chat_offline_message")]
+            PMG --> CACHE_GROUP["Group Member Cache"]
         end
-        
-        CWH -->|"Session管理"| SM[Session HashMap: userId -> Set<WebSocketSession>]
+
+        CWH -->|"Session管理"| SM["Session Map: userId to Sessions"]
     end
 
     API_GATEWAY -->|"加载历史消息"| DB_MSG

@@ -97,6 +97,7 @@ navs:
     href: https://roadmap.sh/u/luisai
     label: 路线图
     mobile-hidden: true
+    target: _blank
 
   -
     href: /about/
