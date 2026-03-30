@@ -103,42 +103,51 @@ document.addEventListener("DOMContentLoaded", () => {
     let width, height;
     let particles = [];
     let nodes = [];
+    let runtimeError = null;
     
-    // The "Lexicon" for the sea of letters (ACG/Cyberpunk vibes)
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン零一二三四五六七八九十界虚空神机同步律动";
     
     function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+        const rect = canvas.parentElement.getBoundingClientRect();
+        width = canvas.width = rect.width || window.innerWidth || 1000;
+        height = canvas.height = rect.height || window.innerHeight || 800;
+        
+        // Setup initial nodes only if empty
+        if (nodes.length === 0) {
+            nodes.push(new Node(width * 0.3, height * 0.4, "NODE-ALPHA"));
+            nodes.push(new Node(width * 0.5, height * 0.6, "NEXUS-CORE"));
+            nodes.push(new Node(width * 0.7, height * 0.3, "DATA-SINK"));
+        } else {
+            // Adjust nodes layout on resize
+            nodes[0].x = width * 0.3; nodes[0].y = height * 0.4;
+            nodes[1].x = width * 0.5; nodes[1].y = height * 0.6;
+            nodes[2].x = width * 0.7; nodes[2].y = height * 0.3;
+        }
         initParticles();
     }
     window.addEventListener('resize', resize);
     
-    // --- Physics Nodes (The draggable anchors) ---
     class Node {
         constructor(x, y, label) {
-            this.x = x;
-            this.y = y;
-            this.radius = 90; // Avoidance radius
+            this.x = x || 100;
+            this.y = y || 100;
+            this.radius = 90; 
             this.coreRadius = 15;
             this.label = label;
             this.isDragging = false;
         }
         draw(ctx) {
-            // Glow effect
             ctx.shadowBlur = 20;
             ctx.shadowColor = "#00e5ff";
             
-            // Outer Avoidance Ring (dashed)
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.strokeStyle = "rgba(0, 229, 255, 0.2)";
-            ctx.setLineDash([5, 5]);
+            if (ctx.setLineDash) ctx.setLineDash([5, 5]);
             ctx.lineWidth = 2;
             ctx.stroke();
             
-            // Inner Core
-            ctx.setLineDash([]);
+            if (ctx.setLineDash) ctx.setLineDash([]);
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.coreRadius, 0, Math.PI * 2);
             ctx.fillStyle = this.isDragging ? "#fff" : "rgba(124, 77, 255, 0.8)";
@@ -147,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.lineWidth = 3;
             ctx.stroke();
             
-            // Label
             ctx.shadowBlur = 0;
             ctx.fillStyle = "#00e5ff";
             ctx.font = "12px monospace";
@@ -155,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // --- Text Particles ---
     class Particle {
         constructor(x, y) {
             this.baseX = x;
@@ -163,21 +170,21 @@ document.addEventListener("DOMContentLoaded", () => {
             this.x = x;
             this.y = y;
             this.char = charset[Math.floor(Math.random() * charset.length)];
-            // Randomize color slightly for depth
             const colors = ["rgba(255,255,255,0.7)", "rgba(0, 229, 255, 0.5)", "rgba(124, 77, 255, 0.6)"];
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.vx = 0;
             this.vy = 0;
+            this.currentColor = this.color;
         }
         
         update() {
-            // Elastic return to base position
             let dx = this.baseX - this.x;
             let dy = this.baseY - this.y;
-            this.vx += dx * 0.05; // spring constant
+            this.vx += dx * 0.05; 
             this.vy += dy * 0.05;
             
-            // Node repulsion (自动避让)
+            let isAlarmed = false;
+            
             nodes.forEach(node => {
                 let distX = this.x - node.x;
                 let distY = this.y - node.y;
@@ -186,17 +193,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (dist < node.radius) {
                     let force = (node.radius - dist) / node.radius;
                     let angle = Math.atan2(distY, distX);
-                    // Add repulsive force
                     this.vx += Math.cos(angle) * force * 5;
                     this.vy += Math.sin(angle) * force * 5;
-                    // Highlight alarmed particles
-                    this.currentColor = "#ff4081"; 
-                } else {
-                    this.currentColor = this.color;
+                    isAlarmed = true;
                 }
             });
             
-            // Friction/Damping
+            this.currentColor = isAlarmed ? "#00e5ff" : this.color;
+            
             this.vx *= 0.8;
             this.vy *= 0.8;
             
@@ -205,18 +209,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         draw(ctx) {
-            ctx.fillStyle = this.currentColor || this.color;
+            ctx.fillStyle = this.currentColor;
             ctx.fillText(this.char, this.x, this.y);
         }
     }
     
     function initParticles() {
         particles = [];
-        const spacing = 22; // Grid spacing for letters
-        ctx.font = "14px monospace";
+        const spacing = 22; 
         for (let y = 0; y < height; y += spacing) {
             for (let x = 0; x < width; x += spacing) {
-                // Skip some to make it look like tech-data blocks rather than a solid wall
                 if (Math.random() > 0.3) {
                     particles.push(new Particle(x, y));
                 }
@@ -224,138 +226,117 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // --- Mouse Interaction ---
     let mouse = { x: 0, y: 0, isDown: false };
     let draggedNode = null;
     
-    canvas.addEventListener('mousedown', (e) => {
+    function getEventPos(e) {
         const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-        mouse.isDown = true;
+        if (e.touches && e.touches.length > 0) {
+            return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+        }
+        return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function handleDown(e) {
+        const pos = getEventPos(e);
+        mouse.x = pos.x; mouse.y = pos.y; mouse.isDown = true;
         
-        // Find if clicked on a node
         for (let i = nodes.length - 1; i >= 0; i--) {
             let dx = mouse.x - nodes[i].x;
             let dy = mouse.y - nodes[i].y;
-            if (dx * dx + dy * dy < 400) { // Click radius ~20px
+            if (dx * dx + dy * dy < 1600) { 
                 draggedNode = nodes[i];
                 draggedNode.isDragging = true;
                 break;
             }
         }
-    });
-    
-    window.addEventListener('mousemove', (e) => {
+    }
+
+    function handleMove(e) {
         if (!mouse.isDown) return;
-        const rect = canvas.getBoundingClientRect();
+        if (e.cancelable) e.preventDefault();
+        const pos = getEventPos(e);
         if (draggedNode) {
-            draggedNode.x = e.clientX - rect.left;
-            draggedNode.y = e.clientY - rect.top;
+            draggedNode.x = pos.x;
+            draggedNode.y = pos.y;
         }
-    });
-    
-    window.addEventListener('mouseup', () => {
+    }
+
+    function handleUp(e) {
         mouse.isDown = false;
         if (draggedNode) {
             draggedNode.isDragging = false;
             draggedNode = null;
         }
-    });
+    }
     
-    // Touch support
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.touches[0].clientX - rect.left;
-        mouse.y = e.touches[0].clientY - rect.top;
-        mouse.isDown = true;
-        
-        for (let i = nodes.length - 1; i >= 0; i--) {
-            let dx = mouse.x - nodes[i].x;
-            let dy = mouse.y - nodes[i].y;
-            if (dx * dx + dy * dy < 1600) { // Larger touch target
-                draggedNode = nodes[i];
-                draggedNode.isDragging = true;
-                break;
-            }
-        }
-    }, {passive: false});
+    canvas.addEventListener('mousedown', handleDown);
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseup', handleUp);
     
-    canvas.addEventListener('touchmove', (e) => {
-        if (!mouse.isDown) return;
-        e.preventDefault();
-        const rect = canvas.getBoundingClientRect();
-        if (draggedNode) {
-            draggedNode.x = e.touches[0].clientX - rect.left;
-            draggedNode.y = e.touches[0].clientY - rect.top;
-        }
-    }, {passive: false});
+    canvas.addEventListener('touchstart', handleDown, {passive: false});
+    canvas.addEventListener('touchmove', handleMove, {passive: false});
+    window.addEventListener('touchend', handleUp);
     
-    window.addEventListener('touchend', () => {
-        mouse.isDown = false;
-        if (draggedNode) {
-            draggedNode.isDragging = false;
-            draggedNode = null;
-        }
-    });
-    
-    // --- Render Loop ---
     function animate() {
-        // Semi-transparent clear for motion blur trail effect on lines
-        ctx.fillStyle = "rgba(10, 10, 20, 0.85)";
-        ctx.fillRect(0, 0, width, height);
-        
-        // Draw Jump Wires (跳线)
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "#7c4dff";
-        ctx.strokeStyle = "rgba(124, 77, 255, 0.6)";
-        ctx.lineWidth = 2;
-        
-        ctx.beginPath();
-        for (let i = 0; i < nodes.length - 1; i++) {
-            let current = nodes[i];
-            let next = nodes[i + 1];
+        try {
+            ctx.fillStyle = "rgba(10, 10, 20, 0.85)";
+            ctx.fillRect(0, 0, width, height);
             
-            // Draw a bezier curve between nodes
-            ctx.moveTo(current.x, current.y);
-            let cp1x = current.x + (next.x - current.x) / 2;
-            let cp1y = current.y;
-            let cp2x = current.x + (next.x - current.x) / 2;
-            let cp2y = next.y;
-            ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, next.x, next.y);
-        }
-        ctx.stroke();
-        
-        // Reset shadow for text
-        ctx.shadowBlur = 0;
-        
-        // Update and draw particles
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw(ctx);
-        }
-        
-        // Draw Nodes
-        for (let i = 0; i < nodes.length; i++) {
-            nodes[i].draw(ctx);
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = "#7c4dff";
+            ctx.strokeStyle = "rgba(124, 77, 255, 0.6)";
+            ctx.lineWidth = 2;
+            
+            ctx.beginPath();
+            for (let i = 0; i < nodes.length - 1; i++) {
+                let current = nodes[i];
+                let next = nodes[i + 1];
+                ctx.moveTo(current.x, current.y);
+                let cp1x = current.x + (next.x - current.x) / 2;
+                let cp1y = current.y;
+                let cp2x = current.x + (next.x - current.x) / 2;
+                let cp2y = next.y;
+                ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, next.x, next.y);
+            }
+            ctx.stroke();
+            
+            ctx.shadowBlur = 0;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.font = "14px monospace";
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw(ctx);
+            }
+            
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].draw(ctx);
+            }
+            
+            if (runtimeError) {
+                ctx.fillStyle = "red";
+                ctx.font = "16px sans-serif";
+                ctx.fillText(runtimeError, width/2, 50);
+            }
+            
+        } catch(err) {
+            runtimeError = "Error: " + err.message;
+            ctx.fillStyle = "red";
+            ctx.fillText(runtimeError, 100, 50);
         }
         
         requestAnimationFrame(animate);
     }
     
-    // Initialize
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    
-    // Setup initial nodes
-    nodes.push(new Node(width * 0.3, height * 0.4, "NODE-ALPHA"));
-    nodes.push(new Node(width * 0.5, height * 0.6, "NEXUS-CORE"));
-    nodes.push(new Node(width * 0.7, height * 0.3, "DATA-SINK"));
-    
-    initParticles();
-    animate();
+    // Boot Initialization
+    try {
+        resize(); // sets width, height, creates nodes, particles
+        animate();
+    } catch(e) {
+        ctx.fillStyle = "red";
+        ctx.fillText("FAIL: " + e.message, 50, 50);
+    }
 });
 </script>
