@@ -28,31 +28,31 @@ keywords: Canvas, 物理引擎, 绝对领域, Jekyll compress 踩坑
 
 ```mermaid
 graph TD
-    A[Window resize/boot] --> B(初始化 Canvas 尺寸 & Nodes/Particles)
-    B --> C{requestAnimationFrame}
+    A["Window resize / boot"] --> B("初始化 Canvas 尺寸、Nodes 与 Particles")
+    B --> C{"requestAnimationFrame"}
     
     %% Input Layer
     subgraph 交互监听层
-        I1(mousedown/touchstart) --> |捕获高亮节点| I2(修改节点坐标 & isDragging 属性)
-        I3(mousemove/touchmove) --> |刷新绝对坐标| I2
+        I1("mousedown / touchstart") --> |捕获高亮节点| I2("修改节点坐标及 isDragging 属性")
+        I3("mousemove / touchmove") --> |刷新绝对坐标| I2
     end
     
     %% Physics Calc
     subgraph 物理运算帧
-        P1(遍历 Particles) --> |计算与基底距离| P2(施加恢复拉力 vx += dx * 0.08)
-        P2 --> P3(计算与 Nodes 距离矩阵)
-        P3 --> |若 Dist < Radius| P4(施加弹斥力 Mathf.atan2 计算夹角推开距)
-        P4 --> P5(速度附加快衰减 vx *= 0.7 降噪避免乱飞)
-        P5 --> P6(更新字符最新坐标 x, y)
+        P1("遍历 Particles") --> |计算与基底距离| P2("施加恢复拉力 vx = vx + dx * 0.08")
+        P2 --> P3("计算与 Nodes 距离矩阵")
+        P3 --> |若 Dist < Radius| P4("施加弹斥力 Mathf.atan2 计算夹角推开距")
+        P4 --> P5("速度附加快衰减 vx = vx * 0.7 降噪避免乱飞")
+        P5 --> P6("更新字符最新坐标 x, y")
     end
     
     %% Render Pipeline
     subgraph 像素绘制管线
-        R1[读取根节点 light-theme 主题状态] --> R2[清理上一帧 clearRect]
-        R2 --> R3[重绘动态底色 fillRect]
-        R3 --> R4[绘制二次贝塞尔曲线连结 跳线]
-        R4 --> R5[根据物理运算层坐标重绘所有字体]
-        R5 --> R6[绘制 Nodes 与发光滤镜 shadowBlur]
+        R1["读取根节点主题状态"] --> R2["清理上一帧 clearRect"]
+        R2 --> R3["重绘动态底色 fillRect"]
+        R3 --> R4["绘制二次贝塞尔曲线连结 (跳线)"]
+        R4 --> R5["根据物理运算层坐标重绘所有字体"]
+        R5 --> R6["绘制 Nodes 与发光滤镜 shadowBlur"]
     end
 
     C --> |读取| I2
