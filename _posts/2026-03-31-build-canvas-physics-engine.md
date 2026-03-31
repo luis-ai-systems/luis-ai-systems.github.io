@@ -2,6 +2,7 @@
 layout: post
 title: 构建纯静态前沿交互：基于 Canvas 的绝对避让排版引擎
 categories: [折腾, 前端实验]
+mermaid: true
 description: 记录如何零后端、全静态实现陈楼 Pretext 风格的万字符弹簧物理避让矩阵，并解决全屏 Canvas 与博客光暗主题以及 Mac 触控板深坑。
 keywords: Canvas, 物理引擎, 绝对领域, Jekyll compress 踩坑
 ---
